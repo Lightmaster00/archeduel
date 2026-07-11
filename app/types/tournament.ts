@@ -1,3 +1,6 @@
+import type { ExtraPolicy, ArchetypeProfile } from '~/types/ranking'
+export type { ExtraPolicy, ArchetypeProfile } from '~/types/ranking'
+
 /** Card category in the representative slot (monsters only for 5+5). */
 export type RepresentativeCategory = 'extra' | 'main' | 'spell' | 'trap'
 
@@ -11,9 +14,6 @@ export interface RepresentativeCard {
   /** Type displayed under the name (Fusion, Synchro, Xyz, Link, Main, Pendulum, etc.). */
   displayType?: string
 }
-
-import type { ExtraPolicy, ArchetypeProfile } from '~/types/ranking'
-export type { ExtraPolicy, ArchetypeProfile } from '~/types/ranking'
 
 /** Archetype data in tournament state (aesthetic preference). */
 export interface ArchetypeState {

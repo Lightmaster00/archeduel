@@ -11,7 +11,7 @@ import {
   K_SWISS
 } from '~/types/tournament'
 import { applyElo, applyGroupElo } from '~/utils/elo'
-import { matchKey, buildCoverageGroups, buildEloProximityGroups, getNextMatchSwiss } from '~/utils/matchmaking'
+import { matchKey, buildCoverageGroups, buildEloProximityGroups } from '~/utils/matchmaking'
 
 const STORAGE_KEY = 'yugidex-tournament'
 
@@ -353,7 +353,7 @@ export function saveState (state: TournamentState): void {
   if (import.meta.client) {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state))
-    } catch {}
+    } catch { /* ignore */ }
   }
 }
 
@@ -374,6 +374,6 @@ export function clearState (): void {
   if (import.meta.client) {
     try {
       localStorage.removeItem(STORAGE_KEY)
-    } catch {}
+    } catch { /* ignore */ }
   }
 }

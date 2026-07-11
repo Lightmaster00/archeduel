@@ -20,7 +20,6 @@ const {
   pickDuel,
   finish,
   undo,
-  cycleArchetypeImage,
   downloadCsv,
   restart,
   resetToStart
@@ -440,7 +439,7 @@ const podiumSlots = computed(() => {
 
       <template v-else-if="state?.phase === 'finished'">
         <Transition name="results">
-          <section key="results" class="results-section">
+          <section v-if="state?.phase === 'finished'" key="results" class="results-section">
             <div class="results-header">
               <span class="results-label">{{ i('results.label') }}</span>
               <h2 class="results-title">{{ i('results.title') }}</h2>
@@ -628,7 +627,7 @@ const podiumSlots = computed(() => {
 
           <!-- App favicon (diamond) -->
           <div class="start-favicon" aria-hidden="true">
-            <img src="/favicon.svg" alt="" width="80" height="80" class="start-favicon__img" />
+            <img src="/favicon.svg" alt="" width="80" height="80" class="start-favicon__img" >
           </div>
 
           <p class="start-brand">Yu-Gi-Oh!</p>

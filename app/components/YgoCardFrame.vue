@@ -39,7 +39,7 @@ const useOfficialCard = computed(() => Boolean(fullCardImageUrl.value))
       :src="fullCardImageUrl"
       :alt="alt || cardName"
       class="ygo-card__full-img"
-    />
+    >
   </div>
 
   <!-- Fallback: CSS layout (when no full image) -->

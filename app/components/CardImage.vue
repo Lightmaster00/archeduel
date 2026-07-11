@@ -21,7 +21,7 @@ const { src, loading, error } = useCachedCardImage(
       :alt="alt"
       :class="imageClass"
       class="card-art"
-    />
+    >
     <div v-else-if="loading" class="card-image-placeholder">…</div>
     <div v-else-if="error" class="card-image-placeholder card-image-error">Error</div>
     <div v-else class="card-image-placeholder">–</div>
