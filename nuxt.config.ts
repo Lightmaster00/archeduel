@@ -23,5 +23,11 @@ export default defineNuxtConfig({
     payloadExtraction: false
   },
 
+  // Composants nommés d'après leur nom de fichier uniquement (pas de préfixe de
+  // dossier) : app/components/tournament/StartScreen.vue -> <StartScreen>
+  components: [
+    { path: '~/components', pathPrefix: false }
+  ],
+
   modules: ['@nuxt/eslint']
 })
