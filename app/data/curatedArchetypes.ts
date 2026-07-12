@@ -1082,19 +1082,6 @@ export const CURATED_ARCHETYPES: Record<string, CuratedArchetypeInfo> = {
     keyCards: ['Geargiarmor', 'Geargiano', 'Gear Gigant X', 'Geargiaccelerator'],
     winCondition: 'board-control'
   },
-  "Battlin' Boxer": {
-    level: 'intermediate',
-    playstyle: 'aggro',
-    themes: ['warrior'],
-    description: "A combat sports deck that tags its boxers in and out of battle to trigger repeated summon effects, snowballing a single opening into a lethal Xyz-backed swing. Rewards aggressive, combat-focused sequencing.",
-    deckSpeed: 'fast',
-    extraDeckDependency: 'medium',
-    era: 'modern',
-    decisionComplexity: 'moderate',
-    dominantMechanic: 'xyz',
-    keyCards: ["Battlin' Boxer Headgear", "Battlin' Boxer Sparring", "Vigoractive Battlin' Boxer"],
-    winCondition: 'otk'
-  },
   'Vampire': {
     level: 'intermediate',
     playstyle: 'midrange',
@@ -1666,19 +1653,6 @@ export const CURATED_ARCHETYPES: Record<string, CuratedArchetypeInfo> = {
     dominantMechanic: 'fusion',
     keyCards: ['Gem-Knight Master Diamond', 'Gem-Knight Garnet', 'Gem-Knight Fusion', 'Gem-Knight Lapis'],
     winCondition: 'board-control'
-  },
-  'Gravekeeper\'s': {
-    level: 'intermediate',
-    playstyle: 'control',
-    themes: ['spellcaster'],
-    description: "A classic field-spell control deck that leans on Necrovalley to lock down Graveyard interaction while its Spellcaster priests grind out advantage. Rewards patient, disciplined play over aggression.",
-    deckSpeed: 'slow',
-    extraDeckDependency: 'low',
-    era: 'classic',
-    decisionComplexity: 'moderate',
-    dominantMechanic: 'main-deck',
-    keyCards: ["Gravekeeper's Spy", "Gravekeeper's Commandant", 'Necrovalley', "Gravekeeper's Stele"],
-    winCondition: 'lockdown'
   },
   'Tellarknight': {
     level: 'intermediate',
