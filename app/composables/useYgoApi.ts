@@ -1,6 +1,6 @@
 import type { CardInfoApiResponse, YgoCard } from '~/types/api'
 import type { RepresentativeCard } from '~/types/tournament'
-import { pickRepresentativeCards, getCardImageUrl, hasValidRepresentatives, pick5Main5Extra, getExtraPolicy, buildArchetypeProfile, filterCardsByArchetype, hasMoreSpecificArchetype } from '~/utils/representativeCard'
+import { pickRepresentativeCards, hasValidRepresentatives, pick5Main5Extra, getExtraPolicy, buildArchetypeProfile, filterCardsByArchetype, hasMoreSpecificArchetype } from '~/utils/representativeCard'
 import { clearCachedArchetypes } from '~/utils/archetypeCache'
 import { runPipeline, ygoCardToCardData, normalizeKey, type PipelineResult, type CardData } from '~/utils/archetypeIntelligence'
 
@@ -28,7 +28,7 @@ export function useCardLanguage () {
     const prev = _language.value
     _language.value = lang
     if (import.meta.client) {
-      try { localStorage.setItem('yugidex-lang', lang) } catch {}
+      try { localStorage.setItem('yugidex-lang', lang) } catch { /* ignore */ }
       if (prev !== lang) {
         clearCachedArchetypes()
         clearRepresentativeResultCache()
@@ -40,7 +40,7 @@ export function useCardLanguage () {
       try {
         const saved = localStorage.getItem('yugidex-lang') as CardLanguage | null
         if (saved && AVAILABLE_LANGUAGES.some(l => l.code === saved)) _language.value = saved
-      } catch {}
+      } catch { /* ignore */ }
     }
   }
   return { language: _language, setLanguage, loadLanguage }
@@ -77,7 +77,7 @@ let _pipelineResult: PipelineResult | null = null
 let _partnerMap = new Map<string, string[]>()
 let _representativeMap = new Map<string, number[]>()
 /** Card IDs (members+supports) per entity — for filtering API intruders */
-let _entityCardIds = new Map<string, Set<number>>()
+const _entityCardIds = new Map<string, Set<number>>()
 
 /** In-memory cache for representative results (per archetype) to speed up next-duel loading. */
 const _representativeResultCache = new Map<string, {

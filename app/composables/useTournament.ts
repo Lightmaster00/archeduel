@@ -1,4 +1,4 @@
-import type { TournamentState, RepresentativeCard } from '~/types/tournament'
+import type { TournamentState } from '~/types/tournament'
 import { loadRepresentativesForArchetype, fetchAndAnalyzeArchetypes } from '~/composables/useYgoApi'
 import { getNextMatchSwiss } from '~/utils/matchmaking'
 import {
@@ -20,8 +20,8 @@ export function useTournament () {
     state: TournamentState,
     archetypeName: string
   ): TournamentState {
-    const next = { ...state, archetypes: { ...state.archetypes } }
-    delete next.archetypes[archetypeName]
+    const { [archetypeName]: _removed, ...remainingArchetypes } = state.archetypes
+    const next = { ...state, archetypes: remainingArchetypes }
     next.remainingNames = state.remainingNames.filter(n => n !== archetypeName)
     next.phasePool = state.phasePool.filter(n => n !== archetypeName)
     if (state.currentMatch?.includes(archetypeName)) next.currentMatch = null

@@ -57,5 +57,5 @@ export function saveVote (winnerId: string, loserId: string): void {
   state.votes = [...state.votes, vote]
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state))
-  } catch {}
+  } catch { /* ignore */ }
 }
