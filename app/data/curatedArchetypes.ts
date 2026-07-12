@@ -539,14 +539,14 @@ export const CURATED_ARCHETYPES: Record<string, CuratedArchetypeInfo> = {
   'Virtual World': {
     level: 'expert',
     playstyle: 'combo',
-    themes: ['beast'],
+    themes: ['wyrm', 'psychic'],
     description: "A Chinese-mythology-themed deck that blends Ritual Summoning with Xyz plays, banishing its own monsters to fuel powerful mid-combo effects. Demands memorizing long combo lines to reach its strongest boards.",
     deckSpeed: 'medium',
     extraDeckDependency: 'medium',
     era: 'recent',
     decisionComplexity: 'high',
     dominantMechanic: 'ritual',
-    keyCards: ['Virtual World Kirin - Sheng', 'Virtual World Gate - Qinglong', 'Virtual World Jet - Chai'],
+    keyCards: ['Virtual World Kirin - Lili', 'Virtual World Gate - Qinglong', 'Virtual World Dragon - Longlong'],
     winCondition: 'board-control'
   },
   'Drytron': {
@@ -604,7 +604,7 @@ export const CURATED_ARCHETYPES: Record<string, CuratedArchetypeInfo> = {
   'Kashtira': {
     level: 'expert',
     playstyle: 'control',
-    themes: ['beast'],
+    themes: ['psychic'],
     description: "A disruptive Xyz deck that banishes cards from either player's field, hand, or graveyard as a cost, denying the opponent's graveyard and Extra Deck strategies while building its own board. Rewards precise timing of its banishment effects.",
     deckSpeed: 'medium',
     extraDeckDependency: 'medium',
@@ -624,7 +624,7 @@ export const CURATED_ARCHETYPES: Record<string, CuratedArchetypeInfo> = {
     era: 'recent',
     decisionComplexity: 'moderate',
     dominantMechanic: 'synchro',
-    keyCards: ['Icejade Kingfisher', 'Icejade Chrysalis', 'Icejade Gymir Aegirine'],
+    keyCards: ['Icejade Creation Kingfisher', 'Icejade Kosmochlor', 'Icejade Gymir Aegirine'],
     winCondition: 'grind'
   },
   'Tearlaments': {
@@ -741,7 +741,7 @@ export const CURATED_ARCHETYPES: Record<string, CuratedArchetypeInfo> = {
     era: 'recent',
     decisionComplexity: 'moderate',
     dominantMechanic: 'main-deck',
-    keyCards: ['Vanquish Soul Razen', 'Vanquish Soul Emperor Coriquen', 'Vanquish Soul Roaring Horror'],
+    keyCards: ['Vanquish Soul Razen', 'Vanquish Soul Caesar Valius', 'Vanquish Soul Heavy Borger'],
     winCondition: 'otk'
   },
   'Mathmech': {
@@ -780,7 +780,7 @@ export const CURATED_ARCHETYPES: Record<string, CuratedArchetypeInfo> = {
     era: 'recent',
     decisionComplexity: 'high',
     dominantMechanic: 'link',
-    keyCards: ['Lady Labrynth of the Silver Castle', 'Cooking Labrynth Cinderella', 'Welcome Labrynth'],
+    keyCards: ['Lady Labrynth of the Silver Castle', 'Lovely Labrynth of the Silver Castle', 'Welcome Labrynth'],
     winCondition: 'grind'
   },
   'Snake-Eye': {
@@ -806,7 +806,7 @@ export const CURATED_ARCHETYPES: Record<string, CuratedArchetypeInfo> = {
     era: 'modern',
     decisionComplexity: 'high',
     dominantMechanic: 'main-deck',
-    keyCards: ['Yubel', 'Yubel - Terror Incarnate', 'Yubel - The Despair Uprising'],
+    keyCards: ['Yubel', 'Yubel - Terror Incarnate', 'Yubel - The Ultimate Nightmare'],
     winCondition: 'grind'
   },
   'Bystial': {
@@ -858,7 +858,7 @@ export const CURATED_ARCHETYPES: Record<string, CuratedArchetypeInfo> = {
     era: 'modern',
     decisionComplexity: 'moderate',
     dominantMechanic: 'link',
-    keyCards: ['World Chalice Guardragon', 'World Chalice Justiciar', 'World Legacy Succession'],
+    keyCards: ['World Chalice Guardragon', 'Ib the World Chalice Justiciar', 'World Legacy Succession'],
     winCondition: 'board-control'
   },
   'Lyrilusc': {
@@ -897,7 +897,7 @@ export const CURATED_ARCHETYPES: Record<string, CuratedArchetypeInfo> = {
     era: 'modern',
     decisionComplexity: 'high',
     dominantMechanic: 'main-deck',
-    keyCards: ['Metaion, the Timelord', 'Kairyu-Shin, the Rakshasa Timelord', 'Vishuda, the Sun-Wizened Timelord'],
+    keyCards: ['Metaion, the Timelord', 'Sephylon, the Ultimate Timelord', 'Sandaion, the Timelord'],
     winCondition: 'lockdown'
   },
   'Neo-Spacian': {
