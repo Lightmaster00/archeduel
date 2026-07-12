@@ -1150,7 +1150,7 @@ export const CURATED_ARCHETYPES: Record<string, CuratedArchetypeInfo> = {
   'Danger!': {
     level: 'intermediate',
     playstyle: 'combo',
-    themes: ['beast', 'dragon'],
+    themes: ['beast'],
     description: "A cryptid-themed deck that discards its own monsters from the hand to Special Summon them from the graveyard, converting simple discard effects into an aggressive board. Rewards knowing which cryptid to commit to first.",
     deckSpeed: 'fast',
     extraDeckDependency: 'low',
@@ -1238,7 +1238,7 @@ export const CURATED_ARCHETYPES: Record<string, CuratedArchetypeInfo> = {
     keyCards: ['Performapal Skullcrobat Joker', 'Performapal Whip Viper', 'Performapal Salutiger', 'Performapal Pendulum Sorcerer'],
     winCondition: 'board-control'
   },
-  'Phantom Knights': {
+  'The Phantom Knights': {
     level: 'intermediate',
     playstyle: 'midrange',
     themes: ['warrior'],
