@@ -299,7 +299,7 @@ export const CURATED_ARCHETYPES: Record<string, CuratedArchetypeInfo> = {
     era: 'modern',
     decisionComplexity: 'moderate',
     dominantMechanic: 'xyz',
-    keyCards: ['Yosenju Kama 1', 'Yosenju Tsujik', 'Yosenju Shinchu', 'Yosen Valley'],
+    keyCards: ['Yosenju Kama 1', 'Yosenju Tsujik', 'Yosenju Shinchu', 'Yosen Training Grounds'],
     winCondition: 'board-control'
   },
   'Zoodiac': {
@@ -364,7 +364,7 @@ export const CURATED_ARCHETYPES: Record<string, CuratedArchetypeInfo> = {
     era: 'modern',
     decisionComplexity: 'moderate',
     dominantMechanic: 'spell-trap',
-    keyCards: ['Subterror Behemoth Stalagmo', 'Subterror Behemoth Umastryx', 'Subterror Guru', 'Subterranean Rikka'],
+    keyCards: ['Subterror Behemoth Stalagmo', 'Subterror Behemoth Umastryx', 'Subterror Guru', 'The Hidden City'],
     winCondition: 'grind'
   },
   'Metalfoes': {
