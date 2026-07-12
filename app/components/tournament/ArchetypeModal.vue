@@ -3,9 +3,12 @@ import type { YgoCard } from '~/types/api'
 import { fetchCardsForArchetype, displayArchetypeName } from '~/composables/useYgoApi'
 import { getCardCategory, getFullCardImageUrl } from '~/utils/representativeCard'
 import { analyzeArchetypeCoherence, type ArchetypeCoherenceResult } from '~/utils/archetypeLinks'
+import { CURATED_ARCHETYPES } from '~/data/curatedArchetypes'
 
 const props = defineProps<{ name: string | null }>()
 const emit = defineEmits<{ close: [] }>()
+
+const curatedInfo = computed(() => (props.name ? CURATED_ARCHETYPES[props.name] : undefined))
 
 /** All archetype cards (API fetch), sorted Extra > Main > Spell > Trap then by name. */
 const modalAllCards = ref<YgoCard[]>([])
@@ -121,6 +124,20 @@ function close () {
               ×
             </button>
           </div>
+        <div v-if="curatedInfo" class="archetype-modal__curated">
+          <p class="archetype-modal__description">{{ curatedInfo.description }}</p>
+          <div class="archetype-modal__tags">
+            <span class="archetype-modal__tag">{{ curatedInfo.level }}</span>
+            <span class="archetype-modal__tag">{{ curatedInfo.playstyle }}</span>
+            <span class="archetype-modal__tag">{{ curatedInfo.deckSpeed }} pace</span>
+            <span class="archetype-modal__tag">{{ curatedInfo.extraDeckDependency }} Extra Deck</span>
+            <span class="archetype-modal__tag">{{ curatedInfo.era }}</span>
+            <span class="archetype-modal__tag">{{ curatedInfo.winCondition }}</span>
+          </div>
+          <p v-if="curatedInfo.keyCards.length" class="archetype-modal__key-cards">
+            Key cards: {{ curatedInfo.keyCards.join(', ') }}
+          </p>
+        </div>
           <div class="archetype-modal__body">
             <template v-if="modalLoading">
               <div class="archetype-modal-loading">
@@ -288,6 +305,43 @@ function close () {
 .archetype-modal__close:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
+}
+
+.archetype-modal__curated {
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+}
+
+.archetype-modal__description {
+  margin: 0 0 0.6rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.archetype-modal__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.archetype-modal__tag {
+  padding: 0.2rem 0.55rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  text-transform: capitalize;
+}
+
+.archetype-modal__key-cards {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--text-muted);
 }
 
 .archetype-modal--two-panels {
