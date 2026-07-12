@@ -1456,7 +1456,7 @@ export const CURATED_ARCHETYPES: Record<string, CuratedArchetypeInfo> = {
     era: 'modern',
     decisionComplexity: 'high',
     dominantMechanic: 'xyz',
-    keyCards: ['Hieratic Dragon of Su', 'Hieratic Seal of the Sun Dragon Overlord of Heliopolis', 'Hieratic Dragon King of Atum', 'Wyrm Prototype'],
+    keyCards: ['Hieratic Dragon of Su', 'Hieratic Seal of the Sun Dragon Overlord of Heliopolis', 'Hieratic Dragon King of Atum', 'Hieratic Seal of Convergence'],
     winCondition: 'board-control'
   },
   'Witchcrafter': {
@@ -1547,7 +1547,7 @@ export const CURATED_ARCHETYPES: Record<string, CuratedArchetypeInfo> = {
     era: 'recent',
     decisionComplexity: 'moderate',
     dominantMechanic: 'xyz',
-    keyCards: ['Plunder Patrollship Kidd', 'Plunder Patrollship Christopher', 'Plunder Patroll Lookout', 'Plunder Patroll Nekojarashi'],
+    keyCards: ['Plunder Patrollship Kidd', 'Plunder Patrollship Christopher', 'Plunder Patroll Lookout', 'Plunder Patrollship Barbarossa'],
     winCondition: 'grind'
   },
   'Runick': {
@@ -1560,7 +1560,7 @@ export const CURATED_ARCHETYPES: Record<string, CuratedArchetypeInfo> = {
     era: 'recent',
     decisionComplexity: 'moderate',
     dominantMechanic: 'spell-trap',
-    keyCards: ['Runick Fountain', 'Runick Flumen', 'Runick Wolf King Wills', 'Runick Burial'],
+    keyCards: ['Runick Fountain', 'Runick Flumen', 'Runick Aurora', 'Runick Burial'],
     winCondition: 'grind'
   },
   'Therion': {
