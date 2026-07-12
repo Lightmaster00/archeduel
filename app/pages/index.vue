@@ -10,7 +10,7 @@ const {
   top10,
   canUndo,
   init,
-  startTournament,
+  _startTournament,
   startTournamentWithPool,
   pickGroup,
   pickDuel,
