@@ -78,6 +78,17 @@ export function useTournamentState () {
     persistState(state.value!)
   }
 
+  /** Démarre un tournoi directement sur un pool donné (questionnaire de préférences),
+   *  sans passer par le pipeline de détection des 300+ archétypes. */
+  async function loadFromPool (names: string[]) {
+    error.value = null
+    const seed = Math.floor(Math.random() * 1e6)
+    state.value = createInitialState(names.map(capitalizeArchetypeName), seed)
+    await setNextMatch()
+    prefetchNextGroup()
+    persistState(state.value!)
+  }
+
   /** Charge le prochain duel avec images prêtes ; préchargement du groupe suivant minimise l'attente. */
   async function setNextMatch () {
     for (let attempt = 0; attempt < MAX_SKIP_RETRIES; attempt++) {
@@ -254,6 +265,24 @@ export function useTournamentState () {
     }
   }
 
+  async function startTournamentWithPool (names: string[]) {
+    loading.value = true
+    error.value = null
+    const timeoutPromise = new Promise<never>((_, reject) => {
+      setTimeout(
+        () => reject(new Error('Loading took too long. Try again (slow connection or busy API).')),
+        START_TIMEOUT_MS
+      )
+    })
+    try {
+      await Promise.race([loadFromPool(names), timeoutPromise])
+    } catch (e) {
+      error.value = (e as Error)?.message ?? 'An error occurred. Please try again.'
+    } finally {
+      loading.value = false
+    }
+  }
+
   function restart () {
     clearPersisted()
     state.value = null
@@ -277,6 +306,7 @@ export function useTournamentState () {
     canUndo,
     init,
     startTournament,
+    startTournamentWithPool,
     pickGroup,
     pickDuel,
     finish,
