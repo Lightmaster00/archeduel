@@ -5,6 +5,9 @@ import { useCardLanguage, capitalizeArchetypeName, setPartnerMapFromCache, setRe
 import { getCachedValidArchetypes, setCachedValidArchetypes } from '~/utils/archetypeCache'
 import { getOrCreateUserId, saveVote } from '~/utils/rankingStorage'
 
+/** Minimum number of archetypes required to start a tournament (any entry path). */
+export const MIN_ARCHETYPE_POOL_SIZE = 4
+
 export function useTournamentState () {
   const state = ref<TournamentState | null>(null)
   const loading = ref(true)
@@ -42,7 +45,7 @@ export function useTournamentState () {
 
     // ── Check cache first ──
     const cached = await getCachedValidArchetypes(lang)
-    if (cached && cached.validNames.length >= 4) {
+    if (cached && cached.validNames.length >= MIN_ARCHETYPE_POOL_SIZE) {
       setPartnerMapFromCache(cached.partnerMap)
       setRepresentativeMapFromCache(cached.representativeMap)
       setEntityCardIdsFromCache(cached.entityCardMap)
@@ -62,8 +65,8 @@ export function useTournamentState () {
       error.value = 'Unable to load archetypes. Check your connection.'
       return
     }
-    if (result.validNames.length < 4) {
-      error.value = 'Not enough archetypes detected (need at least 4).'
+    if (result.validNames.length < MIN_ARCHETYPE_POOL_SIZE) {
+      error.value = `Not enough archetypes detected (need at least ${MIN_ARCHETYPE_POOL_SIZE}).`
       return
     }
 
@@ -82,6 +85,10 @@ export function useTournamentState () {
    *  sans passer par le pipeline de détection des 300+ archétypes. */
   async function loadFromPool (names: string[]) {
     error.value = null
+    if (names.length < MIN_ARCHETYPE_POOL_SIZE) {
+      error.value = `Not enough archetypes match your preferences (need at least ${MIN_ARCHETYPE_POOL_SIZE}).`
+      return
+    }
     const seed = Math.floor(Math.random() * 1e6)
     state.value = createInitialState(names.map(capitalizeArchetypeName), seed)
     await setNextMatch()

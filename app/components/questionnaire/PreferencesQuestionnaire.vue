@@ -6,9 +6,8 @@ import {
   type WinCondition
 } from '~/data/curatedArchetypes'
 import { getMatchingArchetypeNames, type QuestionnaireAnswers } from '~/utils/preferencesScoring'
-import { t } from '~/utils/i18n'
+import { MIN_ARCHETYPE_POOL_SIZE } from '~/composables/useTournamentState'
 
-const _i = (key: string) => t(key, 'en')
 const emit = defineEmits<{ confirm: [names: string[]] }>()
 
 const answers = reactive<QuestionnaireAnswers>({ themes: [] })
@@ -68,7 +67,8 @@ const canConfirm = computed(() =>
   answers.deckSpeed != null &&
   answers.extraDeckDependency != null &&
   answers.era != null &&
-  answers.winCondition != null
+  answers.winCondition != null &&
+  matchingCount.value >= MIN_ARCHETYPE_POOL_SIZE
 )
 
 function confirm () {
