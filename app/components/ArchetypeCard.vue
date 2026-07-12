@@ -11,10 +11,12 @@ const props = defineProps<{
   cardType?: string
   extraPolicy?: ExtraPolicy
   showCardBack?: boolean
+  showInfo?: boolean
 }>()
 
 const emit = defineEmits<{
   select: []
+  info: []
 }>()
 
 const cardBackImageUrl = CARD_BACK_IMAGE_URL
@@ -60,6 +62,15 @@ function tagLabel (cardType?: string, extraPolicy?: ExtraPolicy): string | null 
     :class="{ 'ac--selected': selected }"
   >
     <button
+      v-if="showInfo"
+      type="button"
+      class="ac__info"
+      aria-label="Archetype details"
+      @click.stop="emit('info')"
+    >
+      i
+    </button>
+    <button
       type="button"
       class="ac__btn"
       @click="emit('select')"
@@ -103,12 +114,40 @@ function tagLabel (cardType?: string, extraPolicy?: ExtraPolicy): string | null 
 
 <style scoped>
 .ac {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   max-width: var(--archetype-card-max-width, 100%);
   margin: 0 auto;
+}
+
+.ac__info {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  z-index: 2;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-style: italic;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.ac__info:hover {
+  color: var(--accent);
+  border-color: var(--accent-dim);
 }
 
 .ac__btn {

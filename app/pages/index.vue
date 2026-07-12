@@ -10,7 +10,7 @@ const {
   top10,
   canUndo,
   init,
-  startTournament,
+  startTournamentWithPool,
   pickGroup,
   pickDuel,
   finish,
@@ -133,7 +133,7 @@ onMounted(() => {
         <ArchetypeModal :name="archetypeModalName" @close="archetypeModalName = null" />
       </template>
 
-      <StartScreen v-else-if="!state && !loading" @start="startTournament" />
+      <PreferencesQuestionnaire v-else-if="!state && !loading" @confirm="startTournamentWithPool" />
     </main>
   </div>
 </template>

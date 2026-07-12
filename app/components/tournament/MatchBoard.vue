@@ -19,6 +19,7 @@ const emit = defineEmits<{
 }>()
 
 const selectedCard = ref<string | null>(null)
+const infoArchetypeName = ref<string | null>(null)
 
 /** Cycle index (0..9 = 5 Main + 5 Extra). */
 const matchDisplayGlobalIdx = ref(0)
@@ -145,7 +146,9 @@ const duelRight = computed(() => props.state?.currentMatch?.[1] ?? '')
               :elo="state?.archetypes[duelLeft]?.elo ?? 1000"
               :show-card-back="showCardBack(duelLeft)"
               :extra-policy="state?.archetypes[duelLeft]?.extraPolicy"
+              :show-info="true"
               @select="selectDuel(duelLeft)"
+              @info="infoArchetypeName = duelLeft"
             />
           </div>
           <div class="duel-arena__vs">
@@ -162,7 +165,9 @@ const duelRight = computed(() => props.state?.currentMatch?.[1] ?? '')
               :elo="state?.archetypes[duelRight]?.elo ?? 1000"
               :show-card-back="showCardBack(duelRight)"
               :extra-policy="state?.archetypes[duelRight]?.extraPolicy"
+              :show-info="true"
               @select="selectDuel(duelRight)"
+              @info="infoArchetypeName = duelRight"
             />
           </div>
         </div>
@@ -178,7 +183,9 @@ const duelRight = computed(() => props.state?.currentMatch?.[1] ?? '')
             :show-elo="false"
             :show-card-back="showCardBack(name)"
             :extra-policy="state?.archetypes[name]?.extraPolicy"
+            :show-info="true"
             @select="selectGroup(name)"
+            @info="infoArchetypeName = name"
           />
         </div>
         <div v-if="isDuelMode" class="actions">
@@ -192,6 +199,7 @@ const duelRight = computed(() => props.state?.currentMatch?.[1] ?? '')
         </div>
       </section>
     </Transition>
+    <ArchetypeModal :name="infoArchetypeName" @close="infoArchetypeName = null" />
   </div>
 </template>
 
