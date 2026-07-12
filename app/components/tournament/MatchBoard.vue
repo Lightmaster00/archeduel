@@ -104,8 +104,6 @@ watch(
 
 const duelLeft = computed(() => props.state?.currentMatch?.[0] ?? '')
 const duelRight = computed(() => props.state?.currentMatch?.[1] ?? '')
-
-defineExpose({ isGroupMode, isDuelMode })
 </script>
 
 <template>
@@ -417,19 +415,6 @@ defineExpose({ isGroupMode, isDuelMode })
     grid-template-columns: repeat(2, minmax(0, 340px));
     gap: 2rem;
   }
-}
-
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-top: 2rem;
-}
-
-.btn-lg {
-  padding: 0.85rem 1.75rem;
-  font-size: 0.95rem;
 }
 
 @media (max-width: 640px) {

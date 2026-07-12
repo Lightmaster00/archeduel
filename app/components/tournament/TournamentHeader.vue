@@ -49,8 +49,6 @@ const phaseBadgeText = computed(() => {
   }
   return `${i('phase3.badge')} — ${percent}%`
 })
-
-defineExpose({ displayedProgressPercent })
 </script>
 
 <template>
