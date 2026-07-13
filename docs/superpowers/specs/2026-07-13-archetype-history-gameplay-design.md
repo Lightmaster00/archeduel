@@ -1,33 +1,48 @@
-# Historique et gameplay détaillés des archétypes
+# Extension du pool curaté + historique et gameplay détaillés
 
 ## Contexte
 
 Le questionnaire de préférences et la modal d'archétype enrichie (cycle
 précédent) donnent déjà une description courte (2-3 phrases), 6 tags et une
-liste de cartes clés par archétype. Le retour utilisateur après ce cycle est
-que ce n'est pas assez pour se projeter sur un archétype : pas d'historique
-(pourquoi il existe, d'où il vient), pas de vraie explication de gameplay
-(comment il se joue concrètement), et l'ère (`classic`/`modern`/`recent`) est
-une estimation approximative plutôt qu'un fait vérifiable.
+liste de cartes clés par archétype — mais uniquement pour 131 archétypes
+hand-authored, alors que l'ancien pipeline de détection automatique
+(`archetypeIntelligence.ts` + `useYgoApi.ts`, toujours actif dans le code,
+utilisé quand l'utilisateur relance un tournoi via «restart») en détecte
+dynamiquement 300+ à partir de la base de cartes TCG complète. Le retour
+utilisateur est double : (1) le pool curaté est trop restreint par rapport à
+ce que l'ancien pipeline reconnaît, (2) le contenu manque d'historique
+(pourquoi l'archétype existe, d'où il vient) et d'une vraie explication de
+gameplay — l'ère (`classic`/`modern`/`recent`) actuelle n'est qu'une
+estimation approximative plutôt qu'un fait vérifiable.
 
-Ce cycle enrichit uniquement le contenu et son affichage dans la modal
-existante (`ArchetypeModal.vue`, ouverte via le bouton podium ou le bouton
-«i» pendant les duels). La restructuration du questionnaire et du système de
-duels sont des sujets séparés, hors périmètre ici.
+Ce cycle couvre deux changements étroitement liés, car ils touchent le même
+fichier de données et les mêmes lots de rédaction :
+1. Étendre le fichier curaté pour couvrir tous les archétypes « reconnus »
+   par l'ancien pipeline (pas de nombre fixe visé).
+2. Enrichir chaque entrée (nouvelles et existantes) avec une année de
+   sortie exacte, du contexte historique et un paragraphe de gameplay
+   détaillé, et réorganiser la modal existante en conséquence.
+
+La restructuration du questionnaire (au-delà du changement mécanique décrit
+plus bas) et le système de duels/matchmaking sont des sujets séparés, hors
+périmètre ici.
 
 ## Objectifs
 
-- Ajouter à chaque archétype curé : une année de sortie TCG exacte, un
-  paragraphe de contexte de sortie réel (set, rôle compétitif, impact méta),
-  un paragraphe de lore optionnel (contexte anime/manga quand il existe
-  réellement) et un paragraphe de gameplay plus détaillé que la description
-  courte actuelle.
+- Identifier la liste complète des archétypes que l'ancien pipeline
+  reconnaît aujourd'hui, et rédiger une entrée curatée complète pour chacun
+  de ceux qui manquent encore au fichier.
+- Ajouter à chaque archétype curé (nouveaux et existants) : une année de
+  sortie TCG exacte, un paragraphe de contexte de sortie réel (set, rôle
+  compétitif, impact méta), un paragraphe de lore optionnel (contexte
+  anime/manga quand il existe réellement) et un paragraphe de gameplay plus
+  détaillé que la description courte actuelle.
 - Rendre `era` dérivé automatiquement de l'année de sortie plutôt que
   rédigé à la main, pour supprimer une source de vérité redondante et
   potentiellement incohérente.
-- Réorganiser la modal existante en 3 sections lisibles (Overview, Historique,
-  Gameplay) sans changer son mode d'interaction (pas d'onglets, pas de
-  panneaux dépliables — tout reste dans le scroll actuel).
+- Réorganiser la modal existante en 3 sections lisibles (Overview,
+  Historique, Gameplay) sans changer son mode d'interaction (pas d'onglets,
+  pas de panneaux dépliables — tout reste dans le scroll actuel).
 
 ## Hors périmètre
 
@@ -38,12 +53,49 @@ duels sont des sujets séparés, hors périmètre ici.
 - Un nouveau point d'entrée pour parcourir les archétypes en dehors d'un
   tournoi en cours (reste limité à la modal existante, ouverte pendant un
   tournoi).
-- Mise à jour automatique ou pipeline de récupération de données externes —
-  contenu rédigé à la main, comme le reste du fichier curé.
+- Toute suppression ou modification du pipeline de détection automatique
+  (`archetypeIntelligence.ts`, `useYgoApi.ts`) lui-même — il n'est utilisé
+  ici que ponctuellement, comme source de la liste de candidats.
+- Mise à jour automatique ou synchronisation continue entre le fichier
+  curaté et le pipeline — voir «Suivi» plus bas, c'est un instantané
+  ponctuel, pas une dépendance permanente.
+
+## Pool sourcing — d'où vient la liste des archétypes à rédiger
+
+Il n'existe aucune liste officielle d'archétypes nulle part (ni API dédiée,
+ni fichier) : le «300+» de l'ancien pipeline est un résultat émergent de son
+scoring (mentions dans le texte des cartes + tag `archetype` de l'API,
+seuils d'acceptation, fusion en clusters anti-fourre-tout via
+`buildIntrinsicClusters`, filtre `minCardsForDisplay`).
+
+Démarche retenue :
+1. **Extraction ponctuelle** : exécuter une fois le pipeline existant (via
+   un script one-off ou en déclenchant `fetchAndAnalyzeArchetypes` hors UI)
+   pour obtenir son `validNames` actuel — c'est-à-dire la liste finale déjà
+   filtrée et déjà fusionnée en clusters (le même anti-fourre-tout que la
+   règle de curation existante : Speedroid/Vehicroid restent séparés, pas de
+   «Roid» brut).
+2. **Diff** contre les clés déjà présentes dans `CURATED_ARCHETYPES` (131
+   aujourd'hui) pour obtenir la liste des noms manquants à rédiger.
+3. Pour chaque nom manquant : rédiger une entrée curatée **complète** (les
+   11 champs existants + les 4 nouveaux champs de ce cycle, en une seule
+   passe — pas deux passes séparées).
+4. Pour les 131 entrées déjà existantes : ajouter uniquement les 4 nouveaux
+   champs (pas de nouvelle rédaction des 11 champs existants).
+5. Aucun nombre cible fixe dans ce spec — le volume final dépend de ce que
+   le pipeline détecte réellement au moment de l'extraction (probablement du
+   même ordre que le «300+» mentionné dans le code/les commentaires
+   existants, sans que ce soit une contrainte chiffrée).
+
+**Suivi** : instantané ponctuel, pas de test permanent comparant le fichier
+curaté à une exécution live du pipeline (le pipeline est dynamique/scoré et
+peut varier légèrement d'une exécution à l'autre). Seule reste une
+vérification statique de cohérence interne du fichier (voir Tests).
 
 ## Modèle de données — `app/data/curatedArchetypes.ts`
 
-Le type `CuratedArchetypeInfo` change comme suit :
+Le type `CuratedArchetypeInfo` change comme suit (inchangé pour les 11
+premiers champs, 4 nouveaux ajoutés, `era` supprimé) :
 
 ```ts
 export interface CuratedArchetypeInfo {
@@ -91,7 +143,7 @@ ne change pas côté utilisateur — seule la source de la comparaison change.
   n'est pas connue avec une confiance raisonnable.
 - `releaseContext` : 2-4 phrases, faits réels et vérifiables (set de sortie,
   problème compétitif résolu, impact sur le format à l'époque). Rempli pour
-  les 131 entrées, sans exception.
+  toutes les entrées, sans exception.
 - `lore` : optionnel, rempli uniquement pour les archétypes qui apparaissent
   réellement dans l'anime/manga (ex: Blue-Eyes, Elemental Hero, Dark
   Magician). Absent (pas de placeholder vide) pour les archétypes purement
@@ -99,6 +151,12 @@ ne change pas côté utilisateur — seule la source de la comparaison change.
 - `gameplay` : 2-4 phrases décrivant le déroulement concret d'un tour type
   ou d'une ligne de combo caractéristique — au-delà du teaser existant, pas
   une reformulation de `description`.
+- Pour les nouvelles entrées (issues du diff pipeline), mêmes règles de
+  curation que le cycle précédent pour les 11 champs existants : ≥10 cartes
+  réelles, jamais de label fourre-tout générique, `themes` limité à
+  l'union fermée `ArchetypeTheme` (étendue si un thème réel manque —
+  décision à prendre en implémentation si un nouvel archétype l'exige),
+  `keyCards` = 2-4 noms de cartes réels et vérifiables.
 
 ## Modal — `ArchetypeModal.vue`
 
@@ -120,13 +178,15 @@ modal, avec des titres de section (`<h4>` ou équivalent) pour la lisibilité.
 
 ## Rédaction du contenu — approche
 
-Même ampleur de travail que la rédaction initiale du fichier curé (131
-entrées × 4 nouveaux champs). Même approche : lots successifs d'environ 35
-entrées, chacun suivi d'une vérification `npm run build && npx vitest run`
-avant de passer au lot suivant. Mêmes garde-fous que le cycle précédent :
-faits réels et vérifiables, jamais de card name ou de fait fabriqué par
-défaut de certitude — préférer laisser un champ optionnel absent (`lore`)
-plutôt que d'inventer.
+Volume nettement supérieur au cycle précédent (131 entrées à enrichir de 4
+champs + N nouvelles entrées de 15 champs chacune, N dépendant du diff avec
+le pipeline). Même approche que le cycle précédent : lots successifs
+d'environ 35 archétypes, chacun suivi d'une vérification
+`npm run build && npx vitest run` avant de passer au lot suivant. Mêmes
+garde-fous : faits réels et vérifiables, jamais de card name ou de fait
+fabriqué par défaut de certitude — préférer laisser un champ optionnel
+absent (`lore`) plutôt que d'inventer, et préférer une année approximative
+mais défendable plutôt qu'une date inventée.
 
 ## Tests
 
@@ -134,21 +194,31 @@ plutôt que d'inventer.
   (bornes 2009/2010/2019/2020) et mise à jour des tests existants de
   `computeArchetypeScore` pour utiliser `releaseYear` + `deriveEra` au lieu
   d'un champ `era` stocké dans les fixtures de test.
-- Nouveau test ou script léger de cohérence des données : vérifie que les
-  131 entrées de `CURATED_ARCHETYPES` ont bien un `releaseYear` (nombre
-  valide), un `gameplay` et un `releaseContext` non vides — filet de
-  sécurité contre un oubli lors de la rédaction par lots.
+- Nouveau test ou script léger de cohérence des données : vérifie que
+  **toutes** les entrées de `CURATED_ARCHETYPES` (131 existantes + les
+  nouvelles) ont bien un `releaseYear` (nombre valide), un `gameplay` et un
+  `releaseContext` non vides, et que les nouvelles entrées ont bien les 11
+  champs déjà requis pour les entrées existantes — filet de sécurité contre
+  un oubli lors de la rédaction par lots.
+- Pas de test comparant en continu au pipeline de détection (voir «Suivi»
+  ci-dessus) — l'extraction de la liste de candidats est un instantané
+  ponctuel réalisé en implémentation, pas une dépendance testée à chaque
+  run.
 
 ## Critères de succès
 
-- Chaque archétype curé affiche, dans la modal existante, un historique
-  réel (contexte de sortie + lore si pertinent) et un paragraphe de
-  gameplay détaillé, en plus du contenu déjà existant.
-- L'ère affichée est dérivée automatiquement de l'année de sortie et
-  n'est plus une donnée saisie à la main.
+- Le fichier curaté couvre tous les archétypes détectés par le pipeline
+  existant au moment de l'extraction (aucun nombre fixe visé, mais aucun nom
+  du diff volontairement ignoré sans raison documentée — ex: doublon
+  thématique, label jugé fourre-tout).
+- Chaque archétype curaté (nouveau ou existant) affiche, dans la modal
+  existante, un historique réel (contexte de sortie + lore si pertinent) et
+  un paragraphe de gameplay détaillé, en plus du contenu déjà existant.
+- L'ère affichée est dérivée automatiquement de l'année de sortie et n'est
+  plus une donnée saisie à la main.
 - Le scoring du questionnaire produit exactement les mêmes types de
   résultats qu'avant (mécanique inchangée), simplement basés sur l'ère
-  dérivée plutôt que stockée.
+  dérivée plutôt que stockée, et sur un pool plus large.
 - `npm run lint`, `npx vitest run`, `npm run build` restent propres après
   chaque lot de contenu.
 
@@ -159,7 +229,17 @@ plutôt que d'inventer.
   international, ou entre première apparition dans un booster vs un
   produit de structure dédié). Le principe reste de choisir la date la plus
   défendable et de ne jamais fabriquer une donnée sans fondement.
-- **Volume de rédaction.** 4 nouveaux champs × 131 entrées est un volume de
-  contenu conséquent, du même ordre que la rédaction initiale du fichier
-  curé — un rythme de lots similaire (batches de ~35) est nécessaire pour
-  rester gérable.
+- **Volume de rédaction important.** Le nombre exact de nouvelles entrées
+  dépend du résultat de l'extraction du pipeline (potentiellement 150-200+
+  nouvelles entrées à 15 champs chacune, en plus des 131 existantes à
+  enrichir de 4 champs) — un effort de rédaction significativement plus
+  gros que le cycle précédent, à répartir en plusieurs lots dans le plan
+  d'implémentation.
+- **Extraction du pipeline hors contexte Nuxt.** `fetchAndAnalyzeArchetypes`
+  et `archetypeIntelligence.ts` sont conçus pour tourner dans le contexte de
+  l'app (composables Nuxt) ; extraire leur résultat pour un usage ponctuel
+  côté rédaction peut nécessiter un script ou une méthode d'extraction
+  ad-hoc (ex: lancer l'app, déclencher le pipeline via l'UI existante
+  «restart», et lire le résultat depuis le cache IndexedDB ou un export
+  temporaire) — le détail exact de cette extraction est laissé au plan
+  d'implémentation.
