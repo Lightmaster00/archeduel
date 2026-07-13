@@ -2171,5 +2171,576 @@ export const CURATED_ARCHETYPES: Record<string, CuratedArchetypeInfo> = {
     dominantMechanic: 'ritual',
     keyCards: ['Cyber Angel Benten', 'Cyber Angel Idaten', 'Cyber Angel Natasha', 'Cyber Angel Dakini'],
     winCondition: 'grind'
+  },
+
+  // --- Lot 1: new archetypes from the curated-pool extension (Task 6) ---
+  // Excluded from this batch as generic tags / not cohesive playable archetypes rather than
+  // real curated decks (see task-6-report.md for full reasoning):
+  //   - "-Eyes Dragon": generic suffix grouping across Blue-Eyes/Red-Eyes/etc., not a real archetype.
+  //   - "Assault Mode": generic card-mechanic tag applied across unrelated monsters.
+  //   - "Call of the Haunted": a single individual Trap card's name, not an archetype.
+  //   - "Black Luster Soldier": official sub-archetype of "Chaos" (kept below); would duplicate it.
+  //   - "Bonding": a tiny 2-3 card GX-anime support engine (Bastion Misawa) with one real payoff
+  //     (Water Dragon), not a standalone playable strategy.
+  //   - "CXyz": a generic "Chaos Xyz Evolution" mechanic layered onto other archetypes
+  //     (Constellar, Photon, Gagaga, etc.), not a standalone deck.
+  //   - "Cyber": generic umbrella tag spanning unrelated archetypes (Cyber Dragon/Cyberdark vs.
+  //     Cyber Angel/Cyber Girl); "Cyber Angel" already exists as its own curated entry above.
+  //   - "D.D.": generic "Different Dimension" banishing tag on unrelated individual cards
+  //     (D.D. Warrior Lady, D.D. Crow, etc.), distinct from the real "D/D" archetype (not in this list).
+
+  '@Ignister': {
+    level: 'expert',
+    playstyle: 'combo',
+    themes: ['cyberse'],
+    description: "A grindy Cyberse Link deck that recurs its own monsters from the Graveyard and hand to refuel every turn, wearing down the opponent's resources one small body at a time rather than going for a single explosive turn.",
+    deckSpeed: 'medium',
+    extraDeckDependency: 'high',
+    era: 'modern',
+    releaseYear: 2019,
+    releaseContext: "@Ignister debuted in the OCG's Ignition Assault (2019) and continued directly into Eternity Code (2020), introducing a Cyberse sub-theme built around self-mill and Graveyard recursion rather than the all-out combo lines of its VRAINS-era cousins.",
+    lore: "The @Ignister monsters are the signature cards of Ai, the Ignis character in the Yu-Gi-Oh! VRAINS anime, reflecting his scrappy, resourceful personality by constantly bringing back smaller pieces instead of a single overwhelming boss monster.",
+    gameplay: "A typical turn mills or discards @Ignister monsters to set up its Graveyard, then chains their revival effects into each other and into Link Summons, rebuilding its board every turn even after losing most of it to removal. The deck plays a longer game than most Cyberse strategies, trading raw speed for resilience against one-for-one interaction.",
+    decisionComplexity: 'high',
+    dominantMechanic: 'link',
+    keyCards: ['Wizard @Ignister', 'Dark Templar @Ignister', 'Backup @Ignister', 'Danmari @Ignister'],
+    winCondition: 'grind'
+  },
+
+  'ABC': {
+    level: 'beginner',
+    playstyle: 'aggro',
+    themes: ['machine'],
+    description: "A straightforward Machine beatdown deck built around three Union monsters that equip to each other and then combine into the towering ABC-Dragon Buster without needing Polymerization. Easy to pilot, hard to race.",
+    deckSpeed: 'fast',
+    extraDeckDependency: 'medium',
+    era: 'modern',
+    releaseYear: 2016,
+    releaseContext: "ABC debuted in Structure Deck: Seto Kaiba (2016), a Kaiba Corp-themed preconstructed deck that gave the TCG a cheap, aggressive Machine strategy built entirely around its own on-field Fusion Summon of ABC-Dragon Buster.",
+    gameplay: "The three Union monsters — A-Assault Core, B-Buster Drake, and C-Crush Wyvern — equip onto each other for stat boosts, then combine directly into ABC-Dragon Buster once all three are on the field or in the right zones, without ever drawing Polymerization. The deck plays a simple, resilient beatdown game where losing an equipped Union monster to removal still leaves a body behind.",
+    decisionComplexity: 'linear',
+    dominantMechanic: 'fusion',
+    keyCards: ['ABC-Dragon Buster', 'A-Assault Core', 'B-Buster Drake', 'C-Crush Wyvern'],
+    winCondition: 'otk'
+  },
+
+  'Abyss Actor': {
+    level: 'intermediate',
+    playstyle: 'combo',
+    themes: ['fiend'],
+    description: "A theatrical Pendulum deck that treats its own monsters like a stage production, cycling them between the Pendulum Zones, field, and Extra Deck to build toward an overwhelming curtain call.",
+    deckSpeed: 'medium',
+    extraDeckDependency: 'high',
+    era: 'modern',
+    releaseYear: 2016,
+    releaseContext: "Abyss Actor debuted in the OCG's Booster SP: Destiny Soldiers (2016), a LIGHT Fiend Pendulum theme styled after stage actors and theater productions, giving Pendulum strategies a dedicated recursive engine distinct from the Performapal decks of the same era.",
+    gameplay: "The deck Pendulum Summons its Abyss Actor monsters, uses their stage-themed effects to swap cards between the Pendulum Zones and field, and builds toward Pendulum Summoning several copies of its boss monsters in a single turn. Losing pieces to removal matters less than in most decks, since much of the archetype's value comes back around through its own recursion.",
+    decisionComplexity: 'moderate',
+    dominantMechanic: 'pendulum',
+    keyCards: ['Abyss Actor - Superstar', 'Abyss Actor - Wild Hope', 'Stage Cross Abyss', 'Abyss Script - Legend of the Sea'],
+    winCondition: 'board-control'
+  },
+
+  'Adventurer': {
+    level: 'beginner',
+    playstyle: 'aggro',
+    themes: ['warrior'],
+    description: "A TTRPG-flavored deck built around a single Adventurer Token that gets outfitted with powerful Equip Spells, turning one cheap Special Summon into a fast, resilient beatstick.",
+    deckSpeed: 'fast',
+    extraDeckDependency: 'low',
+    era: 'recent',
+    releaseYear: 2021,
+    releaseContext: "The Adventurer series debuted in The Grand Creators (2021), a set themed around player-created content, and represents the player's own tabletop-RPG-style avatar being summoned into the world of Duel Monsters alongside party members like Water Enchantress of the Temple.",
+    gameplay: "The deck activates Rite of Aramesir as early as possible to put the Adventurer Token on the field, then equips it with the archetype's Equip Spells, which grant new effects and protection when they're later sent to the Graveyard. Because the whole strategy revolves around protecting and re-equipping one resilient Token, the deck plays a fast, low-variance beatdown game with little reliance on the Extra Deck.",
+    decisionComplexity: 'linear',
+    dominantMechanic: 'main-deck',
+    keyCards: ['Rite of Aramesir', 'Adventurer Token', 'Fateful Adventure', 'Water Enchantress of the Temple'],
+    winCondition: 'otk'
+  },
+
+  'Aesir': {
+    level: 'intermediate',
+    playstyle: 'midrange',
+    themes: ['thunder'],
+    description: "A trio of towering Norse-god Synchro monsters that reward building toward a single overwhelming finisher rather than committing to a wide board.",
+    deckSpeed: 'medium',
+    extraDeckDependency: 'high',
+    era: 'modern',
+    releaseYear: 2011,
+    releaseContext: "The Aesir debuted alongside the Nordic support cards in Storm of Ragnarok (2011), giving Yu-Gi-Oh! 5D's-era decks three exclusive, extremely difficult-to-summon Synchro Monsters — Odin, Thor, and Loki — as splashable top-end finishers rather than a full standalone strategy.",
+    lore: "Odin, Thor, and Loki are the signature monsters of Team Ragnarok, the antagonists of the Yu-Gi-Oh! 5D's World Racing Grand Prix arc, who use them as the ultimate payoff of their Nordic-themed decks.",
+    gameplay: "A Nordic deck spends its early turns assembling the specific Tuner and non-Tuner combinations each Aesir monster demands, since their summoning conditions are unusually strict compared to normal Synchro Monsters. Once summoned, a single Aesir monster is typically powerful enough to close out the game on its own, so the deck plays a patient, resource-gathering game before its one big payoff turn.",
+    decisionComplexity: 'moderate',
+    dominantMechanic: 'synchro',
+    keyCards: ['Odin, Father of the Aesir', "Thor, Lord of the Aesir", 'Loki, Lord of the Aesir', 'Nordic Relic Brisingamen'],
+    winCondition: 'otk'
+  },
+
+  'Alien': {
+    level: 'intermediate',
+    playstyle: 'midrange',
+    themes: ['dinosaur'],
+    description: "A LIGHT Reptile deck that spreads A-Counters across the opponent's monsters, warping combat math and disabling their effects the more the board fills up with alien parasites.",
+    deckSpeed: 'medium',
+    extraDeckDependency: 'medium',
+    era: 'classic',
+    releaseYear: 2006,
+    releaseContext: "Alien debuted in Power of the Duelist (2006), introducing A-Counters as a persistent counter mechanic that weakens enemy monsters and enables the archetype's own effects, later gaining Synchro support such as Cosmic Fortress Gol'gar as the format evolved.",
+    gameplay: "The deck normal summons and battles with Alien monsters to spread A-Counters onto the opponent's monsters, which both shrinks their ATK/DEF and powers up Alien support cards the more counters accumulate. Because the strategy scales with board state rather than a single big play, games often turn into a grinding fight over who controls more counters by the mid-game.",
+    decisionComplexity: 'moderate',
+    dominantMechanic: 'main-deck',
+    keyCards: ['Alien Shocktrooper', "Cosmic Fortress Gol'gar", 'Alien Ammonite', 'Alien Overlord'],
+    winCondition: 'grind'
+  },
+
+  'Amorphage': {
+    level: 'intermediate',
+    playstyle: 'control',
+    themes: ['fiend'],
+    description: "A DARK Fiend control deck that mills its own boss monsters to the Graveyard and reanimates them through dedicated Spells and Traps, turning discard fodder into a resilient late-game threat.",
+    deckSpeed: 'slow',
+    extraDeckDependency: 'low',
+    era: 'modern',
+    releaseYear: 2016,
+    releaseContext: "Amorphage debuted in Shining Victories (2016) alongside Lunalight and Digital Bug, giving the format a slower Fiend control theme whose monsters are actually meant to be discarded and revived rather than played straight from the hand.",
+    gameplay: "The deck deliberately sends its own Amorphage monsters to the Graveyard through effects and costs, then uses its Spell/Trap support to Special Summon them back at a more opportune moment, often alongside disruption. Because so much of its game plan routes through the Graveyard rather than the hand, the deck plays a patient, controlling game rather than racing for an early kill.",
+    decisionComplexity: 'moderate',
+    dominantMechanic: 'main-deck',
+    keyCards: ['Amorphage Goliath', 'Amorphage Pride', 'Amorphage Envy', 'Amorphactor Pain'],
+    winCondition: 'grind'
+  },
+
+  'Ancient Warriors': {
+    level: 'beginner',
+    playstyle: 'aggro',
+    themes: ['warrior'],
+    description: "A Three-Kingdoms-themed Beast-Warrior deck that swarms the field from a single strong Normal Summon, rewarding a straightforward beatdown plan over intricate combos.",
+    deckSpeed: 'fast',
+    extraDeckDependency: 'low',
+    era: 'modern',
+    releaseYear: 2019,
+    releaseContext: "Ancient Warriors debuted in the OCG's Ignition Assault (2019), reaching the TCG the following year, portraying dramatized figures from the Chinese historical novel Romance of the Three Kingdoms as Beast-Warrior monsters clad in beast-themed armor.",
+    gameplay: "The deck leans heavily on Normal Summoning key starters like Ancient Warriors - Virtuous Liu Xuan or Ancient Warriors - Masterful Sun Mou, which snowball into further Special Summons and a wide board. Because the strategy is so reliant on a handful of Normal Summon starters, the deck plays a fairly linear beatdown game rather than a flexible combo line.",
+    decisionComplexity: 'linear',
+    dominantMechanic: 'main-deck',
+    keyCards: ['Ancient Warriors - Virtuous Liu Xuan', 'Ancient Warriors - Masterful Sun Mou', 'Ancient Warriors - Loyal Guan Yun'],
+    winCondition: 'board-control'
+  },
+
+  'Appliancer': {
+    level: 'expert',
+    playstyle: 'combo',
+    themes: ['machine'],
+    description: "A pun-heavy Machine Link deck built around household appliances, chaining small Link-1 monsters into each other and into the pivotal Appliancer Celtopus to build a disruptive board.",
+    deckSpeed: 'medium',
+    extraDeckDependency: 'high',
+    era: 'modern',
+    releaseYear: 2020,
+    releaseContext: "Appliancer debuted in Collector's Pack 2020, a home-appliance-themed Machine Link strategy whose monsters are all designed around being co-linked with Appliancer Celtopus, the archetype's sole Link-2 and its central combo piece.",
+    gameplay: "The deck Link Summons its Link-1 monsters into zones pointed to by Appliancer Celtopus, which unlocks stronger versions of their effects while co-linked, from card destruction to hand-advantage-neutral removal. Because almost every card's value depends on being linked to Celtopus specifically, the deck plays a tight combo game where sequencing which monster links where matters a great deal.",
+    decisionComplexity: 'high',
+    dominantMechanic: 'link',
+    keyCards: ['Appliancer Celtopus', 'Appliancer Dryer Drake', 'Appliancer Vacculephant', 'Appliancer Socketroll'],
+    winCondition: 'board-control'
+  },
+
+  'Arcana Force': {
+    level: 'intermediate',
+    playstyle: 'midrange',
+    themes: ['fairy'],
+    description: "A LIGHT Fairy deck built entirely around a coin flip on Summon, where every monster has a strong effect if the flip lands one way and a serious drawback if it lands the other.",
+    deckSpeed: 'medium',
+    extraDeckDependency: 'low',
+    era: 'classic',
+    releaseYear: 2008,
+    releaseContext: "Arcana Force debuted in Light of Destruction (2008), themed after the Major Arcana of the tarot, with each monster's number corresponding to its tarot card and its coin-flip effect swinging between a powerful boon and a costly drawback.",
+    lore: "Arcana Force is the signature archetype of Sartorius Kumar, the tarot-obsessed antagonist of Yu-Gi-Oh! GX's fourth season, whose Society of Light storyline revolves around his ability to see and manipulate fate.",
+    gameplay: "Every Arcana Force monster flips a coin on Summon, gaining one effect if it lands heads and a different, often riskier one if it lands tails, so the deck's game plan constantly gambles between a strong swing and a costly setback. Because so much hinges on the coin flip, the deck plays a higher-variance midrange game than most Fairy strategies of its era.",
+    decisionComplexity: 'moderate',
+    dominantMechanic: 'main-deck',
+    keyCards: ['Arcana Force 0 - THE FOOL', 'Arcana Force EX - The Dark Ruler', 'Arcana Force I - THE MAGICIAN', 'Arcana Force XXI - THE WORLD'],
+    winCondition: 'grind'
+  },
+
+  'Archfiend': {
+    level: 'intermediate',
+    playstyle: 'control',
+    themes: ['fiend'],
+    description: "One of the game's oldest Fiend families, spanning decades of DARK monsters that have evolved from simple classic beatsticks into a modern engine that mills itself and swarms back from the Graveyard.",
+    deckSpeed: 'medium',
+    extraDeckDependency: 'low',
+    era: 'classic',
+    releaseYear: 2003,
+    releaseContext: "Individual Archfiend-named monsters date back to the earliest TCG sets, but Archfiend was formally recognized as a cohesive archetype with Dark Crisis (2003), which introduced the chess-piece-themed sub-series of dice-rolling Archfiends and set the template for decades of later support.",
+    gameplay: "Modern Archfiend decks mill their own monsters to the Graveyard, then use their effects to Special Summon several of them back at once, building an imposing board almost entirely from cards that started outside the hand. Because the deck plays so heavily from the Graveyard rather than the hand, sequencing which Archfiend to mill and revive first is the main skill test.",
+    decisionComplexity: 'moderate',
+    dominantMechanic: 'main-deck',
+    keyCards: ['Terrorking Archfiend', 'Infernalqueen Archfiend', 'Skull Archfiend of Lightning', 'Archfiend Palabyrinth'],
+    winCondition: 'grind'
+  },
+
+  'Armed Dragon': {
+    level: 'beginner',
+    playstyle: 'aggro',
+    themes: ['dragon'],
+    description: "A WIND Dragon deck built around a single monster that evolves through increasingly powerful Levels, discarding cards from hand to destroy the opponent's monsters as it grows.",
+    deckSpeed: 'medium',
+    extraDeckDependency: 'low',
+    era: 'classic',
+    releaseYear: 2005,
+    releaseContext: "Armed Dragon debuted in Soul of the Duelist (2005), giving TCG players an easy-to-understand Dragon strategy where a single monster is repeatedly Special Summoned into stronger and stronger forms rather than requiring a wide board.",
+    lore: "Armed Dragon is the signature Deck that Chancellor Foster awards to Chazz Princeton as North Academy's top duelist in the Yu-Gi-Oh! GX anime, and Chazz continues evolving it alongside his Ojama cards for much of the series.",
+    gameplay: "The deck Special Summons Armed Dragon LV3, then upgrades it into LV5, LV7, and eventually LV10 across multiple turns, discarding cards from hand each time to destroy an opposing monster of matching or lesser ATK. Because the whole plan revolves around protecting and evolving one monster rather than building a field, the deck plays a simple, direct beatdown game.",
+    decisionComplexity: 'linear',
+    dominantMechanic: 'main-deck',
+    keyCards: ['Armed Dragon LV7', 'Armed Dragon LV10', 'Armed Dragon LV3', 'Armed Dragon Thunder LV10'],
+    winCondition: 'board-control'
+  },
+
+  'Aroma': {
+    level: 'intermediate',
+    playstyle: 'control',
+    themes: ['plant'],
+    description: "A defensive Plant deck that gains life points every turn and punishes the opponent for attacking, grinding out games through attrition rather than racing for damage.",
+    deckSpeed: 'slow',
+    extraDeckDependency: 'low',
+    era: 'modern',
+    releaseYear: 2015,
+    releaseContext: "Aroma debuted in Clash of Rebellions (2015), a defensive Plant theme built around continuous lifegain from its Field Spell and monster effects, giving slower decks of the era a dedicated attrition-based control strategy.",
+    gameplay: "The deck sets up Aroma Garden and its Aromage monsters to gain life every turn, using that comfortable life total cushion to survive incoming attacks while its effects whittle down the opponent's field and hand. Games tend to run long, with the Aroma player patiently accumulating small advantages rather than looking for one big turn.",
+    decisionComplexity: 'moderate',
+    dominantMechanic: 'main-deck',
+    keyCards: ['Aromage Jasmine', 'Aroma Garden', 'Aromage Rosemary', 'Fragrance Storm'],
+    winCondition: 'grind'
+  },
+
+  'Artifact': {
+    level: 'intermediate',
+    playstyle: 'control',
+    themes: ['fairy'],
+    description: "A disruptive Fairy deck whose monsters flip face-up from the Spell/Trap Zone as living Traps, ambushing the opponent's turn and grinding out card advantage through relentless backrow value.",
+    deckSpeed: 'medium',
+    extraDeckDependency: 'low',
+    era: 'modern',
+    releaseYear: 2014,
+    releaseContext: "Artifact debuted in Primal Origin (2014), giving control decks of the era a set of ancient-relic-themed Fairy monsters that are Set like Spell/Trap Cards and then Special Summon themselves during either player's turn, disrupting opposing plays on the spot.",
+    gameplay: "Artifact monsters sit face-down in the Spell/Trap Zone like Traps, then flip face-up and Special Summon themselves in response to the opponent's Spell/Trap activations or during the Standby Phase, ambushing their plans. Because the deck's monsters double as backrow, it plays a patient, disruption-heavy control game centered on timing exactly when to flip each Artifact.",
+    decisionComplexity: 'moderate',
+    dominantMechanic: 'spell-trap',
+    keyCards: ['Artifact Lancea', 'Artifact Moralltach', 'Artifact Sanctum', 'Artifact Ignition'],
+    winCondition: 'lockdown'
+  },
+
+  'Artmage': {
+    level: 'intermediate',
+    playstyle: 'combo',
+    themes: ['spellcaster'],
+    description: "A LIGHT Spellcaster Fusion deck that searches its own Field Spell to tutor its monsters, then combines them into powerful Fusion Monsters that punish the opponent for controlling multiple Types.",
+    deckSpeed: 'medium',
+    extraDeckDependency: 'high',
+    era: 'recent',
+    releaseYear: 2025,
+    releaseContext: "Artmage debuted in Duelist's Advance (2025), a LIGHT Spellcaster theme connected through lore to Medius the Pure alongside sibling archetypes like Power Patron and DoomZ, built around discard-to-search Field Spell access and on-demand Fusion Summoning.",
+    gameplay: "The deck searches and activates Artmage Academic Arcane Arts Acropolis to tutor its monsters by discarding Spells/Traps, then Fusion Summons pieces like Artmage Diactorus, whose effects scale with how many different Monster Types the player controls. Turns revolve around assembling a type-diverse board before committing to the Fusion Summon for maximum value.",
+    decisionComplexity: 'moderate',
+    dominantMechanic: 'fusion',
+    keyCards: ['Artmage Diactorus', 'Artmage Litera', 'Artmage Graflare', 'Artmage Academic Arcane Arts Acropolis'],
+    winCondition: 'board-control'
+  },
+
+  'Ashened': {
+    level: 'intermediate',
+    playstyle: 'midrange',
+    themes: ['dragon'],
+    description: "A DARK deck themed after a city buried in volcanic ash, whose monsters special summon themselves under a Field Spell and eventually combine into a devastating dragon that annihilates the board.",
+    deckSpeed: 'fast',
+    extraDeckDependency: 'medium',
+    era: 'recent',
+    releaseYear: 2024,
+    releaseContext: "Ashened debuted as a World Premiere theme in Phantom Nightmare (2024), a Souls-like volcanic-city theme whose DARK monsters Special Summon themselves from the hand while the Field Spell Obsidim, the Ashened City is present, building toward the Fusion boss Veidos the Eruption Dragon of Extinction.",
+    gameplay: "The deck sets Obsidim, the Ashened City to let its monsters pour onto the field straight from the hand, then fuses several of them into Veidos the Eruption Dragon of Extinction, which can wipe the opponent's field or apply overwhelming pressure depending on which Continuous Trap follows it up. Because the payoff is so explosive, the deck plays a fast, all-in game built around assembling Veidos as early as possible.",
+    decisionComplexity: 'moderate',
+    dominantMechanic: 'fusion',
+    keyCards: ['Veidos the Eruption Dragon of Extinction', 'Obsidim, the Ashened City', 'Ashened for Eternity', 'Ashened to Endlessness'],
+    winCondition: 'board-control'
+  },
+
+  'Atlantean': {
+    level: 'beginner',
+    playstyle: 'aggro',
+    themes: ['aqua'],
+    description: "An early WATER beatdown deck built around Union monsters that boost each other's ATK when equipped, later becoming the historical foundation for the modern Mermail strategy.",
+    deckSpeed: 'medium',
+    extraDeckDependency: 'low',
+    era: 'classic',
+    releaseYear: 2008,
+    releaseContext: "Atlantean debuted in Phantom Darkness (2008) with Atlantean Pikeman, giving WATER decks of the era a Union-based beatdown package years before Mermail retroactively adopted the same Atlantean sub-names as its Xyz-era successor.",
+    gameplay: "The deck equips its Atlantean Union monsters onto stronger WATER bodies for stat boosts, unequipping them to summon them back to the field when the host is removed. It plays a resilient, straightforward beatdown game where losing an equipped monster to removal usually just returns it to the field instead of costing real card advantage.",
+    decisionComplexity: 'linear',
+    dominantMechanic: 'main-deck',
+    keyCards: ['Atlantean Dragoons', 'Atlantean Marksman', 'Atlantean Pikeman', 'Atlantean Heavy Infantry'],
+    winCondition: 'board-control'
+  },
+
+  'Azamina': {
+    level: 'expert',
+    playstyle: 'combo',
+    themes: ['fiend'],
+    description: "A DARK Fusion deck built around Illusion-Type monsters that recycle Spells and Traps from the Graveyard back to the hand, feeding an engine that keeps generating advantage turn after turn.",
+    deckSpeed: 'fast',
+    extraDeckDependency: 'high',
+    era: 'recent',
+    releaseYear: 2024,
+    releaseContext: "Azamina debuted in Rage of the Abyss (2024) as part of the \"Sinful Spoils\" storyline, quickly becoming a popular splash package that other Fusion and Ritual decks adopted for its efficient Spell/Trap recursion.",
+    gameplay: "The deck uses its Azamina monsters and Spells to return Spell/Trap Cards from the Graveyard to the hand, letting key pieces be reused multiple times in a single turn while building toward a Fusion Summon. Because its engine is so easy to splash into other strategies, much of the skill lies in sequencing Azamina's recursion around whatever other combo the deck is running.",
+    decisionComplexity: 'high',
+    dominantMechanic: 'fusion',
+    keyCards: ['Azamina', 'The Hallowed Azamina', 'Queen Azamina', 'Azamina Determination'],
+    winCondition: 'otk'
+  },
+
+  'B.E.S.': {
+    level: 'intermediate',
+    playstyle: 'midrange',
+    themes: ['machine'],
+    description: "A Machine deck based on the Gradius video game series' boss ships, stacking modular Core monsters on top of each other to build one increasingly powerful battleship.",
+    deckSpeed: 'medium',
+    extraDeckDependency: 'medium',
+    era: 'modern',
+    releaseYear: 2004,
+    releaseContext: "The original Big Core card debuted in Rise of Destiny (2004); Konami later renamed it B.E.S. Big Core in 2017 and built out a full archetype of modular Core monsters around it, formally recognizing the Gradius-inspired battleship theme decades after its first printing.",
+    gameplay: "The deck stacks its B.E.S. Core monsters as Equip Cards on top of each other, layering their stat boosts and effects into one steadily-growing battleship, then detaches them for one-time bonuses when needed. It plays a patient midrange game, building up its ship over several turns before committing to a big attack.",
+    decisionComplexity: 'moderate',
+    dominantMechanic: 'xyz',
+    keyCards: ['B.E.S. Big Core', 'B.E.S. Covered Core', 'B.E.S. Crystal Core', 'B.E.S. Tetran'],
+    winCondition: 'board-control'
+  },
+
+  'Battlewasp': {
+    level: 'intermediate',
+    playstyle: 'aggro',
+    themes: ['insect'],
+    description: "A WIND Insect Synchro deck that swarms the field with weaponized bugs, growing stronger the more Battlewasp monsters are gathered before erupting into a piercing, burn-heavy finisher.",
+    deckSpeed: 'fast',
+    extraDeckDependency: 'medium',
+    era: 'modern',
+    releaseYear: 2019,
+    releaseContext: "Battlewasp debuted in the TCG in Battles of Legend: Hero's Revenge (2019), known in Japan as \"Bee Force,\" bringing Shinji Weber's ARC-V anime deck of ranged-weapon-themed Insects to the physical card game.",
+    lore: "Battlewasp is the signature archetype of Shinji Weber, a Synchro Summoning specialist who duels alongside Yuya Sakaki's group in the Yu-Gi-Oh! ARC-V anime, reflecting his belief in the strength of numbers and teamwork.",
+    gameplay: "The deck swarms the field with small Insect monsters like Battlewasp - Sting the Poison, whose effects scale up the more Battlewasps are controlled, then Synchro Summons into Battlewasp - Ballista the Armageddon for a piercing, graveyard-fueled finishing blow. Because the archetype's power curve rewards board width, the deck plays an aggressive swarm-then-burn game.",
+    decisionComplexity: 'moderate',
+    dominantMechanic: 'synchro',
+    keyCards: ['Battlewasp - Sting the Poison', 'Battlewasp - Nest', 'Battlewasp - Twinbow the Attacker', 'Battlewasp - Ballista the Armageddon'],
+    winCondition: 'otk'
+  },
+
+  'Beetrooper': {
+    level: 'intermediate',
+    playstyle: 'midrange',
+    themes: ['insect'],
+    description: "An Insect swarm deck that special summons itself back from banishment and the Graveyard, snowballing a wide board of bugs into an unaffected, hard-to-answer Fusion finisher.",
+    deckSpeed: 'medium',
+    extraDeckDependency: 'medium',
+    era: 'recent',
+    releaseYear: 2021,
+    releaseContext: "Beetrooper debuted as a TCG-exclusive theme in Dawn of Majesty (2021), a swarm-focused Insect strategy whose monsters keep returning from banishment and the Graveyard to rebuild the board after being used up.",
+    gameplay: "The deck special summons its Beetrooper monsters repeatedly by banishing and later returning copies of itself, snowballing into a wide board before Fusion Summoning Ultra Beetrooper Absolute Hercules, which is unaffected by other cards' effects for a turn. Because so many pieces recur on their own, the deck plays a resilient, attrition-resistant swarm game.",
+    decisionComplexity: 'moderate',
+    dominantMechanic: 'fusion',
+    keyCards: ['Heavy Beetrooper Mighty Neptune', 'Ultra Beetrooper Absolute Hercules', 'Beetrooper Formation', 'Beetrooper Landing'],
+    winCondition: 'board-control'
+  },
+
+  'Borrel': {
+    level: 'expert',
+    playstyle: 'combo',
+    themes: ['dragon'],
+    description: "A DARK Dragon Link/Fusion package that layers its boss monsters' equip-like effects on top of each other, building one Dragon into a nearly unanswerable threat.",
+    deckSpeed: 'fast',
+    extraDeckDependency: 'high',
+    era: 'modern',
+    releaseYear: 2019,
+    releaseContext: "Borrel debuted alongside Borreload Dragon in Chaos Impact (2019), the sibling package to Rokket used by Varis in the Yu-Gi-Oh! VRAINS anime, giving Link and Fusion Dragon decks a modular set of boss monsters that equip onto each other for stacking effects.",
+    lore: "Borrel monsters are the signature Dragons of Varis, the alias of Ryoken Kogami as leader of the Knights of Hanoi in Yu-Gi-Oh! VRAINS, whose gun-themed dueling style is reflected in the archetype's Japanese name, \"Varrel.\"",
+    gameplay: "The deck builds toward Borreload Dragon or Borrelsword Dragon, then equips other Borrel monsters onto them as Equip Cards to stack extra effects like destruction immunity or bonus attacks. Because the strategy revolves around correctly layering several boss monsters' effects onto one body, sequencing the combo is the main skill test.",
+    decisionComplexity: 'high',
+    dominantMechanic: 'link',
+    keyCards: ['Borreload Dragon', 'Borrelsword Dragon', 'Borreload Savage Dragon', 'Borrelguard Dragon'],
+    winCondition: 'otk'
+  },
+
+  'Centur-Ion': {
+    level: 'intermediate',
+    playstyle: 'midrange',
+    themes: ['warrior'],
+    description: "A Roman-legion-themed Warrior deck that blends Synchro and Fusion Summoning, using its Tuner starter to protect the field while building toward a hybrid boss monster.",
+    deckSpeed: 'medium',
+    extraDeckDependency: 'high',
+    era: 'recent',
+    releaseYear: 2023,
+    releaseContext: "Centur-Ion debuted in Deck Build Pack: Valiant Smashers (2023), a Roman-military-themed Warrior strategy notable for combining Synchro and Fusion Summoning within a single archetype rather than favoring one Extra Deck mechanic.",
+    gameplay: "The deck opens with Centur-Ion Primera, a Tuner that searches more Centur-Ion cards and protects higher-Level monsters from battle, then Synchro Summons before folding those Synchro Monsters into Fusion Summons for its strongest bosses. Because it touches two Extra Deck mechanics in sequence, the deck plays a methodical midrange game built on protecting its board while it assembles the full combo.",
+    decisionComplexity: 'high',
+    dominantMechanic: 'synchro',
+    keyCards: ['Centur-Ion Primera', 'Centur-Ion Legatia', 'Centur-Ion Trudea', 'Centur-Ion Gargoyle II'],
+    winCondition: 'board-control'
+  },
+
+  'Chaos': {
+    level: 'intermediate',
+    playstyle: 'combo',
+    themes: ['spellcaster'],
+    description: "The format-defining classic strategy of banishing a LIGHT and a DARK monster from the Graveyard to unleash devastating Chaos monsters, famous for ending games in a single explosive turn.",
+    deckSpeed: 'fast',
+    extraDeckDependency: 'low',
+    era: 'classic',
+    releaseYear: 2004,
+    releaseContext: "The core Chaos monsters arrived in Invasion of Chaos (2004), and the resulting \"Chaos\" deck built around Chaos Emperor Dragon - Envoy of the End and Black Luster Soldier - Envoy of the Beginning became so dominant in 2004-2005 that both cards were eventually forbidden, defining an entire era of competitive play now referred to as the Chaos format.",
+    lore: "Chaos Emperor Dragon and Black Luster Soldier are among the most iconic cards from the original Yu-Gi-Oh! manga and anime, tied to Yami Yugi and Yami Marik's climactic duels, long before their TCG versions turned them into a dedicated archetype.",
+    gameplay: "The deck banishes one LIGHT and one DARK monster from the Graveyard to Special Summon its Chaos monsters at virtually no cost, then chains their devastating effects — from wiping both players' hands and fields to repeated banishing removal — into a single overwhelming turn. Because the payoff is so large relative to its cost, the deck plays fast and aggressively compared to other Graveyard-based classic strategies.",
+    decisionComplexity: 'moderate',
+    dominantMechanic: 'main-deck',
+    keyCards: ['Black Luster Soldier - Envoy of the Beginning', 'Chaos Emperor Dragon - Envoy of the End', 'Chaos Sorcerer', 'Dimension Fusion'],
+    winCondition: 'otk'
+  },
+
+  'Charmer': {
+    level: 'intermediate',
+    playstyle: 'control',
+    themes: ['spellcaster'],
+    description: "A Spellcaster control deck that steals the opponent's monsters and turns them into resources, using its four elemental Charmers to grind out advantage through repeated removal.",
+    deckSpeed: 'slow',
+    extraDeckDependency: 'low',
+    era: 'classic',
+    releaseYear: 2005,
+    releaseContext: "Charmer debuted in The Lost Millennium (2005) with its original four monsters, Aussa, Eria, Hiita, and Wynn, each built around temporarily controlling a monster of their own Attribute to fuel removal and Tribute costs.",
+    gameplay: "Each Charmer takes control of an opposing monster that shares its Attribute, using it as a Tribute or cost to activate its own powerful effect before the opponent gets it back. Because the deck spends much of its time neutralizing single threats rather than building a wide board, it plays a slow, grinding control game.",
+    decisionComplexity: 'moderate',
+    dominantMechanic: 'main-deck',
+    keyCards: ['Aussa the Earth Charmer', 'Eria the Water Charmer', 'Hiita the Fire Charmer', 'Wynn the Wind Charmer'],
+    winCondition: 'grind'
+  },
+
+  'Chrysalis': {
+    level: 'beginner',
+    playstyle: 'midrange',
+    themes: ['aqua'],
+    description: "A set of weak, low-cost monsters that trade themselves in for their powerful Neo-Spacian counterparts, letting a cheap early play snowball into a much stronger late-game threat.",
+    deckSpeed: 'medium',
+    extraDeckDependency: 'low',
+    era: 'classic',
+    releaseYear: 2007,
+    releaseContext: "Chrysalis debuted in Tactical Evolution (2007), giving each Neo-Spacian monster a weaker 200 ATK/DEF predecessor that could be tributed under the Field Spell Neo Space to fetch the stronger form from the hand or Deck.",
+    lore: "Chrysalis monsters are tied to Jaden Yuki's signature Neo-Spacian cards from the Yu-Gi-Oh! GX anime, representing the \"larval\" stage of his Elemental Hero support before it evolves into the fully-grown Neo-Spacian.",
+    gameplay: "The deck activates Neo Space, then Tributes a Chrysalis monster to Special Summon its corresponding Neo-Spacian directly from the hand or Deck, turning a nearly free early play into a much stronger body without spending a card from hand. Because the upgrade is essentially free value, the deck plays a straightforward tempo game built around getting Neo Space online quickly.",
+    decisionComplexity: 'linear',
+    dominantMechanic: 'main-deck',
+    keyCards: ['Chrysalis Larva', 'Chrysalis Dolphin', 'Chrysalis Mole', 'Neo Space'],
+    winCondition: 'board-control'
+  },
+
+  'Cipher': {
+    level: 'intermediate',
+    playstyle: 'midrange',
+    themes: ['dragon'],
+    description: "A LIGHT Dragon Xyz deck that layers its Cipher monsters' effects onto a single evolving Galaxy-Eyes body, growing a modest starter into a game-ending threat over several turns.",
+    deckSpeed: 'medium',
+    extraDeckDependency: 'high',
+    era: 'modern',
+    releaseYear: 2016,
+    releaseContext: "Cipher debuted in Dragons of Legend: Unleashed (2016), expanding on the earlier Photon/Galaxy-Eyes strategy with a dedicated set of Xyz Monsters built to attach themselves onto Galaxy-Eyes Cipher Dragon as materials.",
+    lore: "Cipher is closely associated with Kite Tenjo, the Photon/Galaxy-Eyes duelist introduced in Yu-Gi-Oh! ZEXAL and later featured in Yu-Gi-Oh! ARC-V, whose signature Galaxy-Eyes Cipher Dragon absorbs other Cipher monsters as Xyz Material to grow stronger.",
+    gameplay: "The deck builds Galaxy-Eyes Cipher Dragon, then attaches other Cipher monsters to it as Xyz Material using support like Cipher Wing, unlocking progressively stronger effects the more materials it has stored. Because the whole strategy revolves around protecting and feeding one Xyz Monster, the deck plays a patient, resource-accumulating midrange game.",
+    decisionComplexity: 'moderate',
+    dominantMechanic: 'xyz',
+    keyCards: ['Galaxy-Eyes Cipher Dragon', 'Cipher Wing', 'Cipher Dragon', 'Rage of Cipher'],
+    winCondition: 'board-control'
+  },
+
+  'Cloudian': {
+    level: 'intermediate',
+    playstyle: 'control',
+    themes: ['fairy'],
+    description: "A WATER Fairy deck built around Fog Counters, whose monsters are immune to destruction by battle in Attack Position but fragile in Defense, rewarding careful management of an unusual resource.",
+    deckSpeed: 'medium',
+    extraDeckDependency: 'low',
+    era: 'classic',
+    releaseYear: 2007,
+    releaseContext: "Cloudian debuted in Gladiator's Assault (2007), giving Yu-Gi-Oh! GX-era decks a WATER Fairy theme built entirely around accumulating and spending Fog Counters to unlock its monsters' effects.",
+    lore: "Cloudian is the signature archetype of Adrian Gecko, a Duel Academy student who appears in the Yu-Gi-Oh! GX anime and battles using the cloud-and-fog-themed strategy.",
+    gameplay: "The deck accumulates Fog Counters on its monsters and field to unlock stronger effects, while keeping its Cloudians in Attack Position so they can't be destroyed by battle. Managing exactly how many Fog Counters are on the field, and when to cash them in versus save them, is the main decision point each turn.",
+    decisionComplexity: 'moderate',
+    dominantMechanic: 'main-deck',
+    keyCards: ['Cloudian - Turbulence', 'Cloudian - Poison Cloud', 'Cloudian - Eye of the Typhoon'],
+    winCondition: 'grind'
+  },
+
+  'Clown Crew': {
+    level: 'expert',
+    playstyle: 'combo',
+    themes: ['warrior'],
+    description: "A LIGHT Beast-Warrior deck that Special Summons monsters from the Deck or Extra Deck regardless of their normal requirements, then Tributes them for a cascade of powerful effects.",
+    deckSpeed: 'medium',
+    extraDeckDependency: 'medium',
+    era: 'recent',
+    releaseYear: 2026,
+    releaseContext: "Clown Crew debuted in Blazing Dominion (2026), known in Japan as \"Clown Clan,\" the first archetype built around a strategy that touches all six major monster classifications — Ritual, Fusion, Synchro, Xyz, Pendulum, and Link — by Summoning them outside their normal conditions and then Tributing them away.",
+    gameplay: "The deck Special Summons Clown Crew monsters of various classifications from the Deck or Extra Deck without meeting their usual conditions, then Tributes them into Clown Crew Biancaviso for a scaling payoff based on how many monsters were used. Because it touches so many different summoning mechanics as raw Tribute fodder, the deck plays an unusually flexible combo game with many different lines to the same finisher.",
+    decisionComplexity: 'high',
+    dominantMechanic: 'main-deck',
+    keyCards: ['Clown Crew Biancaviso', 'Clown Crew New Face'],
+    winCondition: 'board-control'
+  },
+
+  'Code Talker': {
+    level: 'intermediate',
+    playstyle: 'combo',
+    themes: ['cyberse'],
+    description: "The signature Cyberse Link deck of the protagonist of Yu-Gi-Oh! VRAINS, chaining small Effect Monsters into a Link Summon and layering counters onto a single Code Talker for growing protection.",
+    deckSpeed: 'medium',
+    extraDeckDependency: 'high',
+    era: 'modern',
+    releaseYear: 2018,
+    releaseContext: "Code Talker debuted in the TCG in Starter Deck: Codebreaker (2018), introducing Cyberse Link Monsters as an accessible, beginner-friendly entry point into Link Summoning built around stacking Counters for escalating protection and effects.",
+    lore: "Code Talker is the signature Extra Deck archetype of Yusaku Fujiki, the protagonist known as Playmaker in the Yu-Gi-Oh! VRAINS anime, whose evolving Code Talker monsters reflect his journey from a lone hacker to a fully-fledged duelist.",
+    gameplay: "The deck Link Summons a Code Talker using small Cyberse monsters as material, then feeds it Counters through its own effects or support cards to unlock stronger protection and disruption the more Counters it holds. Because the strategy revolves around building up and protecting a single resilient Link Monster, the deck plays a steady, defensively-minded combo game.",
+    decisionComplexity: 'moderate',
+    dominantMechanic: 'link',
+    keyCards: ['Code Talker', 'Excode Talker', 'Encode Talker', 'Accesscode Talker'],
+    winCondition: 'board-control'
+  },
+
+  'Crusadia': {
+    level: 'intermediate',
+    playstyle: 'combo',
+    themes: ['beast'],
+    description: "A Beast Fusion deck that Special Summons Fusion Monsters directly from the Extra Deck without Polymerization, layering their effects together to protect the field and pressure the opponent.",
+    deckSpeed: 'fast',
+    extraDeckDependency: 'high',
+    era: 'modern',
+    releaseYear: 2018,
+    releaseContext: "Crusadia debuted in Cybernetic Horizon (2018), part of the wider World Legacy storyline, giving Beast strategies a self-contained Fusion engine that Special Summons its own Fusion Monsters straight from the Extra Deck as a cost or effect rather than through Polymerization.",
+    gameplay: "The deck Special Summons Crusadia Fusion Monsters directly onto the field using their own effects, then uses those bodies to protect key cards from destruction or push through repeated pressure. Because it bypasses Polymerization entirely, the deck can rebuild its Fusion board quickly even after losing pieces to removal.",
+    decisionComplexity: 'moderate',
+    dominantMechanic: 'fusion',
+    keyCards: ['Crusadia Reveler', 'Crusadia Maximus', 'Crusadia Genom', 'Fenrir the Ancient Wolf God'],
+    winCondition: 'board-control'
+  },
+
+  'Crystron': {
+    level: 'expert',
+    playstyle: 'combo',
+    themes: ['machine'],
+    description: "A Machine Synchro deck built around Needlefiber's ability to summon a Tuner straight from the Deck, chaining Synchro Summons into each other to assemble a powerful board in one turn.",
+    deckSpeed: 'fast',
+    extraDeckDependency: 'high',
+    era: 'modern',
+    releaseYear: 2016,
+    releaseContext: "Crystron debuted in Invasion: Vengeance (2016), a crystalline Machine Synchro theme whose core piece, Crystron Needlefiber, became a staple splash card in unrelated Synchro strategies for its ability to summon Tuners directly from the Deck.",
+    gameplay: "The deck uses Crystron Halqifibrax or Crystron Needlefiber to pull additional Tuners straight from the Deck, chaining Synchro Summon after Synchro Summon in a single turn to assemble multiple powerful Synchro Monsters from very little starting material. Because so much of the combo runs through one or two key pieces, protecting the opening play is the main skill test.",
+    decisionComplexity: 'high',
+    dominantMechanic: 'synchro',
+    keyCards: ['Crystron Halqifibrax', 'Crystron Needlefiber', 'Crystron Rosenix', 'Crystron Quandax'],
+    winCondition: 'board-control'
   }
 }
