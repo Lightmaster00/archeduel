@@ -294,7 +294,6 @@ export function useTournamentState () {
     clearPersisted()
     state.value = null
     error.value = null
-    startTournament()
   }
 
   /** Resets selection: clears the tournament and shows the start screen. */
