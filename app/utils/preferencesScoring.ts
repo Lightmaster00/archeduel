@@ -18,6 +18,13 @@ const MATCH_POINTS = 10
 const AVOID_PENALTY = 15
 const THRESHOLD_RATIO = 0.6
 
+/** Derives the display era from a real TCG release year (thresholds match the pre-existing ArchetypeEra buckets). */
+export function deriveEra (year: number): ArchetypeEra {
+  if (year < 2010) return 'classic'
+  if (year < 2020) return 'modern'
+  return 'recent'
+}
+
 /** Max score achievable given which questions have been answered. */
 export function computeMaxScore (answers: QuestionnaireAnswers): number {
   let max = 0

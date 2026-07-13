@@ -29,6 +29,14 @@ export interface CuratedArchetypeInfo {
   deckSpeed: DeckSpeed
   extraDeckDependency: ExtraDeckDependency
   era: ArchetypeEra
+  /** TCG debut year. Optional during content migration (Tasks 3-9); required once locked (Task 10). */
+  releaseYear?: number
+  /** 2-4 sentences: release set, competitive role, meta impact. Required for all entries once Task 10 locks the schema. */
+  releaseContext?: string
+  /** In-universe anime/manga context. Only present when the archetype genuinely appears there. */
+  lore?: string
+  /** 2-4 sentences on concrete turn-to-turn play, beyond the short `description` teaser. */
+  gameplay?: string
   decisionComplexity: DecisionComplexity
   dominantMechanic: DominantMechanic
   keyCards: string[]

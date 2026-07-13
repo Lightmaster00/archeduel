@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { computeMaxScore, computeArchetypeScore, getMatchingArchetypeNames } from './preferencesScoring'
+import { computeMaxScore, computeArchetypeScore, getMatchingArchetypeNames, deriveEra } from './preferencesScoring'
 import type { QuestionnaireAnswers } from './preferencesScoring'
 import type { CuratedArchetypeInfo } from '~/data/curatedArchetypes'
 
@@ -116,5 +116,22 @@ describe('getMatchingArchetypeNames', () => {
     const answers: QuestionnaireAnswers = { ...emptyAnswers(), level: 'expert', avoidMechanic: 'link' }
     // max = 10, threshold = 6 → Avoided scores 10-15=-5 (dropped), Kept scores 10 (kept)
     expect(getMatchingArchetypeNames(pool, answers)).toEqual(['Kept'])
+  })
+})
+
+describe('deriveEra', () => {
+  it('returns classic for years before 2010', () => {
+    expect(deriveEra(2009)).toBe('classic')
+    expect(deriveEra(1996)).toBe('classic')
+  })
+
+  it('returns modern for years from 2010 up to (not including) 2020', () => {
+    expect(deriveEra(2010)).toBe('modern')
+    expect(deriveEra(2019)).toBe('modern')
+  })
+
+  it('returns recent for years from 2020 onward', () => {
+    expect(deriveEra(2020)).toBe('recent')
+    expect(deriveEra(2026)).toBe('recent')
   })
 })
