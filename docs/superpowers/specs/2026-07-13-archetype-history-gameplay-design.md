@@ -54,29 +54,39 @@ périmètre ici.
   tournoi en cours (reste limité à la modal existante, ouverte pendant un
   tournoi).
 - Toute suppression ou modification du pipeline de détection automatique
-  (`archetypeIntelligence.ts`, `useYgoApi.ts`) lui-même — il n'est utilisé
-  ici que ponctuellement, comme source de la liste de candidats.
+  (`archetypeIntelligence.ts`, `useYgoApi.ts`) lui-même — il reste inchangé
+  et n'est plus impliqué dans ce cycle (voir Pool sourcing ci-dessous,
+  révisé suite à la découverte d'un endpoint dédié).
 - Mise à jour automatique ou synchronisation continue entre le fichier
-  curaté et le pipeline — voir «Suivi» plus bas, c'est un instantané
-  ponctuel, pas une dépendance permanente.
+  curaté et l'API — voir «Suivi» plus bas, c'est un instantané ponctuel,
+  pas une dépendance permanente.
 
 ## Pool sourcing — d'où vient la liste des archétypes à rédiger
 
-Il n'existe aucune liste officielle d'archétypes nulle part (ni API dédiée,
-ni fichier) : le «300+» de l'ancien pipeline est un résultat émergent de son
-scoring (mentions dans le texte des cartes + tag `archetype` de l'API,
-seuils d'acceptation, fusion en clusters anti-fourre-tout via
-`buildIntrinsicClusters`, filtre `minCardsForDisplay`).
+Contrairement à l'hypothèse initiale de ce spec, YGOPRODeck expose bien un
+endpoint dédié à la liste des archétypes : `GET
+https://db.ygoprodeck.com/api/v7/archetypes.php`. Un seul appel retourne
+**646 noms** (`archetype_name`), vérifié directement le 2026-07-13. C'est la
+liste brute de toutes les valeurs distinctes du champ `archetype` toutes
+cartes confondues — elle inclut des tags génériques non-jouables ("Assault
+Mode", "Attribute Summoner", "-Eyes Dragon") qui ne sont pas de vrais
+archétypes, donc un filtrage reste nécessaire, mais c'est une source
+beaucoup plus simple que de faire tourner l'ancien pipeline d'inférence
+(plus besoin de crawler les ~13k cartes ni de scoring de mentions textuelles
+— un seul appel API remplace tout ça).
 
 Démarche retenue :
-1. **Extraction ponctuelle** : exécuter une fois le pipeline existant (via
-   un script one-off ou en déclenchant `fetchAndAnalyzeArchetypes` hors UI)
-   pour obtenir son `validNames` actuel — c'est-à-dire la liste finale déjà
-   filtrée et déjà fusionnée en clusters (le même anti-fourre-tout que la
-   règle de curation existante : Speedroid/Vehicroid restent séparés, pas de
-   «Roid» brut).
-2. **Diff** contre les clés déjà présentes dans `CURATED_ARCHETYPES` (131
-   aujourd'hui) pour obtenir la liste des noms manquants à rédiger.
+1. **Extraction ponctuelle** : un appel à `archetypes.php` pour obtenir les
+   646 noms candidats.
+2. **Filtrage** : pour chaque nom, vérifier via `cardinfo.php?archetype=<nom>`
+   qu'il correspond à un archétype réel et jouable — mêmes critères que la
+   curation existante (≥10 cartes réelles, pas de label fourre-tout
+   générique regroupant plusieurs archétypes distincts). Les tags
+   manifestement non-jouables (suffixes de mécanique comme «Assault Mode»,
+   catégories transversales comme «Attribute Summoner») sont exclus à cette
+   étape.
+3. **Diff** contre les clés déjà présentes dans `CURATED_ARCHETYPES` (131
+   aujourd'hui) pour obtenir la liste finale des noms manquants à rédiger.
 3. Pour chaque nom manquant : rédiger une entrée curatée **complète** (les
    11 champs existants + les 4 nouveaux champs de ce cycle, en une seule
    passe — pas deux passes séparées).
@@ -207,10 +217,10 @@ mais défendable plutôt qu'une date inventée.
 
 ## Critères de succès
 
-- Le fichier curaté couvre tous les archétypes détectés par le pipeline
-  existant au moment de l'extraction (aucun nombre fixe visé, mais aucun nom
-  du diff volontairement ignoré sans raison documentée — ex: doublon
-  thématique, label jugé fourre-tout).
+- Le fichier curaté couvre tous les archétypes réels et jouables présents
+  dans `archetypes.php` au moment de l'extraction (aucun nombre fixe visé,
+  mais aucun nom retenu après filtrage volontairement ignoré sans raison
+  documentée — ex: doublon thématique, label jugé fourre-tout).
 - Chaque archétype curaté (nouveau ou existant) affiche, dans la modal
   existante, un historique réel (contexte de sortie + lore si pertinent) et
   un paragraphe de gameplay détaillé, en plus du contenu déjà existant.
@@ -230,16 +240,13 @@ mais défendable plutôt qu'une date inventée.
   produit de structure dédié). Le principe reste de choisir la date la plus
   défendable et de ne jamais fabriquer une donnée sans fondement.
 - **Volume de rédaction important.** Le nombre exact de nouvelles entrées
-  dépend du résultat de l'extraction du pipeline (potentiellement 150-200+
-  nouvelles entrées à 15 champs chacune, en plus des 131 existantes à
-  enrichir de 4 champs) — un effort de rédaction significativement plus
-  gros que le cycle précédent, à répartir en plusieurs lots dans le plan
-  d'implémentation.
-- **Extraction du pipeline hors contexte Nuxt.** `fetchAndAnalyzeArchetypes`
-  et `archetypeIntelligence.ts` sont conçus pour tourner dans le contexte de
-  l'app (composables Nuxt) ; extraire leur résultat pour un usage ponctuel
-  côté rédaction peut nécessiter un script ou une méthode d'extraction
-  ad-hoc (ex: lancer l'app, déclencher le pipeline via l'UI existante
-  «restart», et lire le résultat depuis le cache IndexedDB ou un export
-  temporaire) — le détail exact de cette extraction est laissé au plan
-  d'implémentation.
+  dépend du résultat du filtrage des 646 candidats de `archetypes.php`
+  (potentiellement 150-200+ nouvelles entrées à 15 champs chacune, en plus
+  des 131 existantes à enrichir de 4 champs) — un effort de rédaction
+  significativement plus gros que le cycle précédent, à répartir en
+  plusieurs lots dans le plan d'implémentation.
+- **Bruit dans la liste brute de `archetypes.php`.** Les 646 noms incluent
+  des tags non-jouables (mécaniques génériques, catégories transversales) —
+  le filtrage (étape 2 du Pool sourcing) doit être fait avec la même
+  rigueur que les règles de curation existantes, pas juste rédiger les 646
+  noms tels quels.
