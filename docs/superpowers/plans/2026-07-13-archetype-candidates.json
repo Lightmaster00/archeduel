@@ -1,0 +1,894 @@
+[
+  {
+    "name": "-Eyes Dragon",
+    "cardCount": 15
+  },
+  {
+    "name": "@Ignister",
+    "cardCount": 30
+  },
+  {
+    "name": "ABC",
+    "cardCount": 19
+  },
+  {
+    "name": "Abyss Actor",
+    "cardCount": 26
+  },
+  {
+    "name": "Adventurer",
+    "cardCount": 13
+  },
+  {
+    "name": "Aesir",
+    "cardCount": 12
+  },
+  {
+    "name": "Alien",
+    "cardCount": 40
+  },
+  {
+    "name": "Amorphage",
+    "cardCount": 11
+  },
+  {
+    "name": "Ancient Warriors",
+    "cardCount": 20
+  },
+  {
+    "name": "Appliancer",
+    "cardCount": 13
+  },
+  {
+    "name": "Arcana Force",
+    "cardCount": 18
+  },
+  {
+    "name": "Archfiend",
+    "cardCount": 103
+  },
+  {
+    "name": "Armed Dragon",
+    "cardCount": 21
+  },
+  {
+    "name": "Aroma",
+    "cardCount": 21
+  },
+  {
+    "name": "Artifact",
+    "cardCount": 16
+  },
+  {
+    "name": "Artmage",
+    "cardCount": 10
+  },
+  {
+    "name": "Ashened",
+    "cardCount": 11
+  },
+  {
+    "name": "Assault Mode",
+    "cardCount": 19
+  },
+  {
+    "name": "Atlantean",
+    "cardCount": 12
+  },
+  {
+    "name": "Azamina",
+    "cardCount": 12
+  },
+  {
+    "name": "B.E.S.",
+    "cardCount": 11
+  },
+  {
+    "name": "Battlewasp",
+    "cardCount": 16
+  },
+  {
+    "name": "Beetrooper",
+    "cardCount": 15
+  },
+  {
+    "name": "Black Luster Soldier",
+    "cardCount": 18
+  },
+  {
+    "name": "Bonding",
+    "cardCount": 10
+  },
+  {
+    "name": "Borrel",
+    "cardCount": 17
+  },
+  {
+    "name": "Call of the Haunted",
+    "cardCount": 10
+  },
+  {
+    "name": "Centur-Ion",
+    "cardCount": 15
+  },
+  {
+    "name": "Chaos",
+    "cardCount": 42
+  },
+  {
+    "name": "Charmer",
+    "cardCount": 26
+  },
+  {
+    "name": "Chrysalis",
+    "cardCount": 10
+  },
+  {
+    "name": "Cipher",
+    "cardCount": 15
+  },
+  {
+    "name": "Cloudian",
+    "cardCount": 19
+  },
+  {
+    "name": "Clown Crew",
+    "cardCount": 12
+  },
+  {
+    "name": "Code Talker",
+    "cardCount": 24
+  },
+  {
+    "name": "Crusadia",
+    "cardCount": 13
+  },
+  {
+    "name": "Crystron",
+    "cardCount": 22
+  },
+  {
+    "name": "CXyz",
+    "cardCount": 10
+  },
+  {
+    "name": "Cyber",
+    "cardCount": 10
+  },
+  {
+    "name": "D.D.",
+    "cardCount": 27
+  },
+  {
+    "name": "Darklord",
+    "cardCount": 29
+  },
+  {
+    "name": "Demise",
+    "cardCount": 10
+  },
+  {
+    "name": "Despia",
+    "cardCount": 11
+  },
+  {
+    "name": "Destiny HERO",
+    "cardCount": 48
+  },
+  {
+    "name": "Destruction Sword",
+    "cardCount": 12
+  },
+  {
+    "name": "Dinomorphia",
+    "cardCount": 13
+  },
+  {
+    "name": "Djinn",
+    "cardCount": 15
+  },
+  {
+    "name": "Dododo",
+    "cardCount": 13
+  },
+  {
+    "name": "DoomZ",
+    "cardCount": 12
+  },
+  {
+    "name": "Dracoslayer",
+    "cardCount": 10
+  },
+  {
+    "name": "Dracotail",
+    "cardCount": 14
+  },
+  {
+    "name": "Dragonmaid",
+    "cardCount": 19
+  },
+  {
+    "name": "Dream Mirror",
+    "cardCount": 18
+  },
+  {
+    "name": "Dual Avatar",
+    "cardCount": 13
+  },
+  {
+    "name": "Earthbound",
+    "cardCount": 35
+  },
+  {
+    "name": "Edge Imp",
+    "cardCount": 18
+  },
+  {
+    "name": "Egyptian God",
+    "cardCount": 15
+  },
+  {
+    "name": "Elfnote",
+    "cardCount": 13
+  },
+  {
+    "name": "Endymion",
+    "cardCount": 16
+  },
+  {
+    "name": "Enneacraft",
+    "cardCount": 14
+  },
+  {
+    "name": "Evil Eye",
+    "cardCount": 18
+  },
+  {
+    "name": "Evil HERO",
+    "cardCount": 21
+  },
+  {
+    "name": "Evolsaur",
+    "cardCount": 18
+  },
+  {
+    "name": "Exodia",
+    "cardCount": 12
+  },
+  {
+    "name": "Exosister",
+    "cardCount": 17
+  },
+  {
+    "name": "Eyes Restrict",
+    "cardCount": 10
+  },
+  {
+    "name": "F.A.",
+    "cardCount": 18
+  },
+  {
+    "name": "Fire Formation",
+    "cardCount": 11
+  },
+  {
+    "name": "Flame Swordsman",
+    "cardCount": 10
+  },
+  {
+    "name": "Flamvell",
+    "cardCount": 19
+  },
+  {
+    "name": "Flower Cardian",
+    "cardCount": 23
+  },
+  {
+    "name": "Fluffal",
+    "cardCount": 17
+  },
+  {
+    "name": "Fortune Lady",
+    "cardCount": 16
+  },
+  {
+    "name": "Fossil",
+    "cardCount": 12
+  },
+  {
+    "name": "Frog",
+    "cardCount": 19
+  },
+  {
+    "name": "Fur Hire",
+    "cardCount": 23
+  },
+  {
+    "name": "Fusion",
+    "cardCount": 12
+  },
+  {
+    "name": "Gadget",
+    "cardCount": 16
+  },
+  {
+    "name": "Gagaga",
+    "cardCount": 29
+  },
+  {
+    "name": "Gaia The Fierce Knight",
+    "cardCount": 26
+  },
+  {
+    "name": "Galaxy-Eyes",
+    "cardCount": 22
+  },
+  {
+    "name": "Gem-",
+    "cardCount": 45
+  },
+  {
+    "name": "Generaider",
+    "cardCount": 18
+  },
+  {
+    "name": "Gizmek",
+    "cardCount": 10
+  },
+  {
+    "name": "GMX",
+    "cardCount": 13
+  },
+  {
+    "name": "Goblin",
+    "cardCount": 18
+  },
+  {
+    "name": "Gold Pride",
+    "cardCount": 16
+  },
+  {
+    "name": "Graydle",
+    "cardCount": 10
+  },
+  {
+    "name": "Greed",
+    "cardCount": 28
+  },
+  {
+    "name": "Guardian",
+    "cardCount": 34
+  },
+  {
+    "name": "Gunkan",
+    "cardCount": 11
+  },
+  {
+    "name": "Gusto",
+    "cardCount": 27
+  },
+  {
+    "name": "Hazy",
+    "cardCount": 10
+  },
+  {
+    "name": "Hecahands",
+    "cardCount": 14
+  },
+  {
+    "name": "Herald",
+    "cardCount": 14
+  },
+  {
+    "name": "Heraldic",
+    "cardCount": 17
+  },
+  {
+    "name": "Heroic",
+    "cardCount": 25
+  },
+  {
+    "name": "Hole",
+    "cardCount": 28
+  },
+  {
+    "name": "Igknight",
+    "cardCount": 14
+  },
+  {
+    "name": "Infernoid",
+    "cardCount": 23
+  },
+  {
+    "name": "Infinitrack",
+    "cardCount": 16
+  },
+  {
+    "name": "Inzektor",
+    "cardCount": 24
+  },
+  {
+    "name": "Jinzo",
+    "cardCount": 14
+  },
+  {
+    "name": "Junk",
+    "cardCount": 35
+  },
+  {
+    "name": "Jurrac",
+    "cardCount": 23
+  },
+  {
+    "name": "K9",
+    "cardCount": 14
+  },
+  {
+    "name": "Kaiju",
+    "cardCount": 13
+  },
+  {
+    "name": "Kewl Tune",
+    "cardCount": 14
+  },
+  {
+    "name": "Koa'ki Meiru",
+    "cardCount": 44
+  },
+  {
+    "name": "Krawler",
+    "cardCount": 16
+  },
+  {
+    "name": "Kuriboh",
+    "cardCount": 31
+  },
+  {
+    "name": "Laval",
+    "cardCount": 32
+  },
+  {
+    "name": "Legendary Knight",
+    "cardCount": 15
+  },
+  {
+    "name": "Libromancer",
+    "cardCount": 15
+  },
+  {
+    "name": "Light and Darkness Ritual",
+    "cardCount": 10
+  },
+  {
+    "name": "Lswarm",
+    "cardCount": 19
+  },
+  {
+    "name": "Lunalight",
+    "cardCount": 22
+  },
+  {
+    "name": "Machina",
+    "cardCount": 24
+  },
+  {
+    "name": "Magician",
+    "cardCount": 40
+  },
+  {
+    "name": "Magikey",
+    "cardCount": 15
+  },
+  {
+    "name": "Magistus",
+    "cardCount": 19
+  },
+  {
+    "name": "Majespecter",
+    "cardCount": 18
+  },
+  {
+    "name": "Malefic",
+    "cardCount": 15
+  },
+  {
+    "name": "Maliss",
+    "cardCount": 12
+  },
+  {
+    "name": "Marincess",
+    "cardCount": 27
+  },
+  {
+    "name": "Mask",
+    "cardCount": 14
+  },
+  {
+    "name": "Masked HERO",
+    "cardCount": 10
+  },
+  {
+    "name": "Materiactor",
+    "cardCount": 10
+  },
+  {
+    "name": "Mayakashi",
+    "cardCount": 20
+  },
+  {
+    "name": "Megalith",
+    "cardCount": 14
+  },
+  {
+    "name": "Meklord",
+    "cardCount": 22
+  },
+  {
+    "name": "Memento",
+    "cardCount": 16
+  },
+  {
+    "name": "Metaphys",
+    "cardCount": 11
+  },
+  {
+    "name": "Mikanko",
+    "cardCount": 19
+  },
+  {
+    "name": "Mimighoul",
+    "cardCount": 14
+  },
+  {
+    "name": "Mist Valley",
+    "cardCount": 12
+  },
+  {
+    "name": "Mitsurugi",
+    "cardCount": 14
+  },
+  {
+    "name": "Monarch",
+    "cardCount": 37
+  },
+  {
+    "name": "Myutant",
+    "cardCount": 15
+  },
+  {
+    "name": "Nephthys",
+    "cardCount": 14
+  },
+  {
+    "name": "Noble Knight",
+    "cardCount": 53
+  },
+  {
+    "name": "Nordic",
+    "cardCount": 22
+  },
+  {
+    "name": "Number",
+    "cardCount": 12
+  },
+  {
+    "name": "Numeron",
+    "cardCount": 12
+  },
+  {
+    "name": "Odd-Eyes",
+    "cardCount": 32
+  },
+  {
+    "name": "Ogdoadic",
+    "cardCount": 15
+  },
+  {
+    "name": "P.U.N.K.",
+    "cardCount": 17
+  },
+  {
+    "name": "Pendulum",
+    "cardCount": 12
+  },
+  {
+    "name": "Penguin",
+    "cardCount": 18
+  },
+  {
+    "name": "Performage",
+    "cardCount": 18
+  },
+  {
+    "name": "Phantasm",
+    "cardCount": 15
+  },
+  {
+    "name": "Phantom Knights",
+    "cardCount": 31
+  },
+  {
+    "name": "Predaplant",
+    "cardCount": 27
+  },
+  {
+    "name": "Prediction Princess",
+    "cardCount": 10
+  },
+  {
+    "name": "PSY-Frame",
+    "cardCount": 13
+  },
+  {
+    "name": "Purrely",
+    "cardCount": 16
+  },
+  {
+    "name": "Qli",
+    "cardCount": 14
+  },
+  {
+    "name": "R.B.",
+    "cardCount": 14
+  },
+  {
+    "name": "Radiant Typhoon",
+    "cardCount": 12
+  },
+  {
+    "name": "Ragnaraika",
+    "cardCount": 12
+  },
+  {
+    "name": "Raidraptor",
+    "cardCount": 52
+  },
+  {
+    "name": "Reptilianne",
+    "cardCount": 20
+  },
+  {
+    "name": "Rescue-ACE",
+    "cardCount": 17
+  },
+  {
+    "name": "Resonator",
+    "cardCount": 22
+  },
+  {
+    "name": "Rikka",
+    "cardCount": 15
+  },
+  {
+    "name": "Ritual Beast",
+    "cardCount": 22
+  },
+  {
+    "name": "Roid",
+    "cardCount": 63
+  },
+  {
+    "name": "Rokket",
+    "cardCount": 27
+  },
+  {
+    "name": "Rose",
+    "cardCount": 14
+  },
+  {
+    "name": "Rose Dragon",
+    "cardCount": 27
+  },
+  {
+    "name": "Ryu-Ge",
+    "cardCount": 12
+  },
+  {
+    "name": "Ryzeal",
+    "cardCount": 11
+  },
+  {
+    "name": "S-Force",
+    "cardCount": 20
+  },
+  {
+    "name": "Sacred Beast",
+    "cardCount": 13
+  },
+  {
+    "name": "Scrap",
+    "cardCount": 27
+  },
+  {
+    "name": "Shark",
+    "cardCount": 13
+  },
+  {
+    "name": "Shinobird",
+    "cardCount": 10
+  },
+  {
+    "name": "Simorgh",
+    "cardCount": 15
+  },
+  {
+    "name": "Sinful Spoils",
+    "cardCount": 12
+  },
+  {
+    "name": "Slime",
+    "cardCount": 10
+  },
+  {
+    "name": "Solfachord",
+    "cardCount": 18
+  },
+  {
+    "name": "Spellbook",
+    "cardCount": 34
+  },
+  {
+    "name": "Sphinx",
+    "cardCount": 11
+  },
+  {
+    "name": "Springans",
+    "cardCount": 16
+  },
+  {
+    "name": "Stardust",
+    "cardCount": 20
+  },
+  {
+    "name": "Starry Knight",
+    "cardCount": 11
+  },
+  {
+    "name": "Steelswarm",
+    "cardCount": 15
+  },
+  {
+    "name": "Super Quant",
+    "cardCount": 18
+  },
+  {
+    "name": "Superheavy",
+    "cardCount": 38
+  },
+  {
+    "name": "Supreme King",
+    "cardCount": 12
+  },
+  {
+    "name": "Swordsoul",
+    "cardCount": 17
+  },
+  {
+    "name": "Symphonic Warrior",
+    "cardCount": 10
+  },
+  {
+    "name": "Synchro",
+    "cardCount": 14
+  },
+  {
+    "name": "Synchron",
+    "cardCount": 22
+  },
+  {
+    "name": "T.G.",
+    "cardCount": 34
+  },
+  {
+    "name": "The Agent",
+    "cardCount": 14
+  },
+  {
+    "name": "The Weather",
+    "cardCount": 16
+  },
+  {
+    "name": "Thunder Dragon",
+    "cardCount": 14
+  },
+  {
+    "name": "Time Thief",
+    "cardCount": 13
+  },
+  {
+    "name": "Tindangle",
+    "cardCount": 14
+  },
+  {
+    "name": "Tistina",
+    "cardCount": 15
+  },
+  {
+    "name": "Toon",
+    "cardCount": 31
+  },
+  {
+    "name": "Train",
+    "cardCount": 26
+  },
+  {
+    "name": "True Draco",
+    "cardCount": 14
+  },
+  {
+    "name": "U.A.",
+    "cardCount": 18
+  },
+  {
+    "name": "Umi",
+    "cardCount": 29
+  },
+  {
+    "name": "Unchained",
+    "cardCount": 14
+  },
+  {
+    "name": "Vaalmonica",
+    "cardCount": 16
+  },
+  {
+    "name": "Valkyrie",
+    "cardCount": 21
+  },
+  {
+    "name": "Vaylantz",
+    "cardCount": 15
+  },
+  {
+    "name": "Venom",
+    "cardCount": 13
+  },
+  {
+    "name": "Vernusylph",
+    "cardCount": 10
+  },
+  {
+    "name": "Vision HERO",
+    "cardCount": 13
+  },
+  {
+    "name": "Volcanic",
+    "cardCount": 19
+  },
+  {
+    "name": "War Rock",
+    "cardCount": 15
+  },
+  {
+    "name": "Watt",
+    "cardCount": 32
+  },
+  {
+    "name": "White",
+    "cardCount": 12
+  },
+  {
+    "name": "White Forest",
+    "cardCount": 13
+  },
+  {
+    "name": "World Legacy",
+    "cardCount": 26
+  },
+  {
+    "name": "Worm",
+    "cardCount": 37
+  },
+  {
+    "name": "Xyz",
+    "cardCount": 14
+  },
+  {
+    "name": "Yummy",
+    "cardCount": 14
+  },
+  {
+    "name": "Zexal",
+    "cardCount": 11
+  }
+]
