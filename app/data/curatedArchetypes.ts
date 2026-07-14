@@ -4715,7 +4715,7 @@ export const CURATED_ARCHETYPES: Record<string, CuratedArchetypeInfo> = {
   'Scrap': {
     level: 'intermediate',
     playstyle: 'midrange',
-    themes: ['machine'],
+    themes: ['machine', 'dragon'],
     description: "An EARTH deck that destroys its own monsters on purpose to trigger recursive effects, funneling the resulting resources into powerful Scrap Dragon Synchro Monsters.",
     deckSpeed: 'medium',
     extraDeckDependency: 'medium',
@@ -4789,8 +4789,8 @@ export const CURATED_ARCHETYPES: Record<string, CuratedArchetypeInfo> = {
     deckSpeed: 'fast',
     extraDeckDependency: 'medium',
     era: 'recent',
-    releaseYear: 2025,
-    releaseContext: "Sinful Spoils debuted in Duelist Nexus (TCG 2023) but only received its first dedicated archetype support in Age of Overlord (2025), a Spell/Trap package related by lore to Diabellstar, Snake-Eye, and White Forest that mainly powers those other archetypes.",
+    releaseYear: 2023,
+    releaseContext: "Sinful Spoils debuted in Duelist Nexus (TCG 2023) but only received its first dedicated archetype support in Age of Overlord (2023), a Spell/Trap package related by lore to Diabellstar, Snake-Eye, and White Forest that mainly powers those other archetypes.",
     gameplay: "The deck activates its Sinful Spoils Spells and Traps to search and reuse copies of themselves while setting up the Special Summon conditions for its allied Snake-Eye, Diabellstar, or White Forest boss monsters. Because the archetype's own payoff is smaller than the strategies it supports, choosing which ally to splash it alongside is the main deckbuilding decision.",
     decisionComplexity: 'moderate',
     dominantMechanic: 'spell-trap',
@@ -4980,7 +4980,7 @@ export const CURATED_ARCHETYPES: Record<string, CuratedArchetypeInfo> = {
     extraDeckDependency: 'high',
     era: 'recent',
     releaseYear: 2021,
-    releaseContext: "Swordsoul debuted in Dawn of Majesty (2021), though most of its members and first support arrived in Burst of Destiny (2022); it quickly became a tier-1 competitive Synchro strategy prized for its self-generated Swordsoul Token smoothing out its combo lines.",
+    releaseContext: "Swordsoul debuted in Dawn of Majesty (2021), though most of its members and first support arrived in Burst of Destiny (2021); it quickly became a tier-1 competitive Synchro strategy prized for its self-generated Swordsoul Token smoothing out its combo lines.",
     gameplay: "The deck sends or discards Swordsoul monsters to Special Summon a Level 4 Swordsoul Token Tuner, then uses that free Tuner to Synchro Summon reincarnated-warrior boss monsters like Swordsoul Strategist Longyuan far more consistently than typical Synchro strategies. Because the token trivializes Tuner access, the real decision each turn is which Swordsoul monster to spend generating it.",
     decisionComplexity: 'high',
     dominantMechanic: 'synchro',
@@ -5130,13 +5130,13 @@ export const CURATED_ARCHETYPES: Record<string, CuratedArchetypeInfo> = {
   'Tistina': {
     level: 'expert',
     playstyle: 'control',
-    themes: ['fairy', 'fiend'],
+    themes: ['aqua'],
     description: "A small, coherent going-second control package built to swarm the field defensively and disrupt the opponent's turn, prioritizing surviving to its own turn over racing.",
     deckSpeed: 'slow',
     extraDeckDependency: 'low',
     era: 'recent',
     releaseYear: 2023,
-    releaseContext: "Tistina debuted in Duelist Nexus (TCG July 2023) as a coherent swarming, going-second strategy, with additional support following in Age of Overlord (2024).",
+    releaseContext: "Tistina debuted in Duelist Nexus (TCG July 2023) as a coherent swarming, going-second strategy, with additional support following in Age of Overlord (2023).",
     gameplay: "The deck deploys its Tistina monsters like Sentinel of the Tistina and Demigod of the Tistina to build a defensive wall and disrupt the opponent's combos, deliberately choosing to go second so it can react to whatever the opponent commits to the field. Because the whole plan hinges on surviving the opponent's first turn, conserving resources for the right moment to interrupt is the central skill.",
     decisionComplexity: 'moderate',
     dominantMechanic: 'main-deck',
@@ -5321,7 +5321,12 @@ export const CURATED_ARCHETYPES: Record<string, CuratedArchetypeInfo> = {
   'Volcanic': {
     level: 'intermediate',
     playstyle: 'aggro',
-    themes: ['dinosaur'],
+    // Volcanic monsters are all genuinely Pyro-Type, which has no entry in the closed
+    // ArchetypeTheme union; 'dinosaur' was previously used as an unrelated stand-in.
+    // Following the Sacred Beast precedent (omitting a proxy for its Pyro member Uria
+    // rather than substituting an unrelated theme), we leave themes empty here instead
+    // of misrepresenting the archetype's actual Type distribution.
+    themes: [],
     description: "A FIRE Pyro deck of reptilian, military-hardware-themed monsters used by Axel Brodie, feeding its own monsters into Blaze Accelerator as ammunition to blast the opponent's field and Life Points.",
     deckSpeed: 'fast',
     extraDeckDependency: 'low',
