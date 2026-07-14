@@ -1,7 +1,8 @@
 import { describe, it, expect } from 'vitest'
-import { computeMaxScore, computeArchetypeScore, getMatchingArchetypeNames } from './preferencesScoring'
+import { computeMaxScore, computeArchetypeScore, getMatchingArchetypeNames, deriveEra } from './preferencesScoring'
 import type { QuestionnaireAnswers } from './preferencesScoring'
 import type { CuratedArchetypeInfo } from '~/data/curatedArchetypes'
+import { CURATED_ARCHETYPES } from '~/data/curatedArchetypes'
 
 function makeInfo (overrides: Partial<CuratedArchetypeInfo> = {}): CuratedArchetypeInfo {
   return {
@@ -11,7 +12,9 @@ function makeInfo (overrides: Partial<CuratedArchetypeInfo> = {}): CuratedArchet
     description: 'Test archetype.',
     deckSpeed: 'fast',
     extraDeckDependency: 'low',
-    era: 'classic',
+    releaseYear: 2005, // classic
+    releaseContext: 'Test release context.',
+    gameplay: 'Test gameplay paragraph.',
     decisionComplexity: 'linear',
     dominantMechanic: 'main-deck',
     keyCards: ['Test Card'],
@@ -68,6 +71,13 @@ describe('computeArchetypeScore', () => {
     expect(computeArchetypeScore(info, { ...emptyAnswers(), level: 'beginner' })).toBe(0)
   })
 
+  it('matches era derived from releaseYear, not a stored era field', () => {
+    const modernInfo = makeInfo({ releaseYear: 2015 }) // deriveEra(2015) === 'modern'
+    const classicInfo = makeInfo({ releaseYear: 2005 }) // deriveEra(2005) === 'classic'
+    expect(computeArchetypeScore(modernInfo, { ...emptyAnswers(), era: 'modern' })).toBe(10)
+    expect(computeArchetypeScore(classicInfo, { ...emptyAnswers(), era: 'modern' })).toBe(0)
+  })
+
   it('matches themes on any overlap', () => {
     const info = makeInfo({ themes: ['dragon', 'warrior'] })
     expect(computeArchetypeScore(info, { ...emptyAnswers(), themes: ['warrior', 'machine'] })).toBe(10)
@@ -116,5 +126,31 @@ describe('getMatchingArchetypeNames', () => {
     const answers: QuestionnaireAnswers = { ...emptyAnswers(), level: 'expert', avoidMechanic: 'link' }
     // max = 10, threshold = 6 → Avoided scores 10-15=-5 (dropped), Kept scores 10 (kept)
     expect(getMatchingArchetypeNames(pool, answers)).toEqual(['Kept'])
+  })
+})
+
+describe('deriveEra', () => {
+  it('returns classic for years before 2010', () => {
+    expect(deriveEra(2009)).toBe('classic')
+    expect(deriveEra(1996)).toBe('classic')
+  })
+
+  it('returns modern for years from 2010 up to (not including) 2020', () => {
+    expect(deriveEra(2010)).toBe('modern')
+    expect(deriveEra(2019)).toBe('modern')
+  })
+
+  it('returns recent for years from 2020 onward', () => {
+    expect(deriveEra(2020)).toBe('recent')
+    expect(deriveEra(2026)).toBe('recent')
+  })
+})
+
+describe('CURATED_ARCHETYPES data integrity', () => {
+  it('every entry has releaseYear, releaseContext and gameplay filled', () => {
+    const incomplete = Object.entries(CURATED_ARCHETYPES).filter(
+      ([, info]) => !info.releaseYear || !info.releaseContext?.trim() || !info.gameplay?.trim()
+    )
+    expect(incomplete.map(([name]) => name)).toEqual([])
   })
 })
