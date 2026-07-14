@@ -4,6 +4,7 @@ import { fetchCardsForArchetype, displayArchetypeName } from '~/composables/useY
 import { getCardCategory, getFullCardImageUrl } from '~/utils/representativeCard'
 import { analyzeArchetypeCoherence, type ArchetypeCoherenceResult } from '~/utils/archetypeLinks'
 import { CURATED_ARCHETYPES } from '~/data/curatedArchetypes'
+import { deriveEra } from '~/utils/preferencesScoring'
 
 const props = defineProps<{ name: string | null }>()
 const emit = defineEmits<{ close: [] }>()
@@ -125,15 +126,30 @@ function close () {
             </button>
           </div>
         <div v-if="curatedInfo" class="archetype-modal__curated">
-          <p class="archetype-modal__description">{{ curatedInfo.description }}</p>
-          <div class="archetype-modal__tags">
-            <span class="archetype-modal__tag">{{ curatedInfo.level }}</span>
-            <span class="archetype-modal__tag">{{ curatedInfo.playstyle }}</span>
-            <span class="archetype-modal__tag">{{ curatedInfo.deckSpeed }} pace</span>
-            <span class="archetype-modal__tag">{{ curatedInfo.extraDeckDependency }} Extra Deck</span>
-            <span class="archetype-modal__tag">{{ curatedInfo.era }}</span>
-            <span class="archetype-modal__tag">{{ curatedInfo.winCondition }}</span>
-          </div>
+          <section class="archetype-modal__section">
+            <h4 class="archetype-modal__section-title">Overview</h4>
+            <p class="archetype-modal__description">{{ curatedInfo.description }}</p>
+            <div class="archetype-modal__tags">
+              <span class="archetype-modal__tag">{{ curatedInfo.level }}</span>
+              <span class="archetype-modal__tag">{{ curatedInfo.playstyle }}</span>
+              <span class="archetype-modal__tag">{{ curatedInfo.deckSpeed }} pace</span>
+              <span class="archetype-modal__tag">{{ curatedInfo.extraDeckDependency }} Extra Deck</span>
+              <span class="archetype-modal__tag">{{ deriveEra(curatedInfo.releaseYear) }} · {{ curatedInfo.releaseYear }}</span>
+              <span class="archetype-modal__tag">{{ curatedInfo.winCondition }}</span>
+            </div>
+          </section>
+
+          <section class="archetype-modal__section">
+            <h4 class="archetype-modal__section-title">History</h4>
+            <p class="archetype-modal__paragraph">{{ curatedInfo.releaseContext }}</p>
+            <p v-if="curatedInfo.lore" class="archetype-modal__paragraph">{{ curatedInfo.lore }}</p>
+          </section>
+
+          <section class="archetype-modal__section">
+            <h4 class="archetype-modal__section-title">Gameplay</h4>
+            <p class="archetype-modal__paragraph">{{ curatedInfo.gameplay }}</p>
+          </section>
+
           <p v-if="curatedInfo.keyCards.length" class="archetype-modal__key-cards">
             Key cards: {{ curatedInfo.keyCards.join(', ') }}
           </p>
@@ -313,11 +329,39 @@ function close () {
   flex-shrink: 0;
 }
 
+.archetype-modal__section {
+  margin-bottom: 0.85rem;
+}
+
+.archetype-modal__section:last-of-type {
+  margin-bottom: 0.5rem;
+}
+
+.archetype-modal__section-title {
+  margin: 0 0 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
 .archetype-modal__description {
   margin: 0 0 0.6rem;
   font-size: 0.82rem;
   line-height: 1.5;
   color: var(--text-secondary);
+}
+
+.archetype-modal__paragraph {
+  margin: 0 0 0.4rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.archetype-modal__paragraph:last-child {
+  margin-bottom: 0;
 }
 
 .archetype-modal__tags {
