@@ -3696,7 +3696,7 @@ export const CURATED_ARCHETYPES: Record<string, CuratedArchetypeInfo> = {
   'K9': {
     level: 'expert',
     playstyle: 'control',
-    themes: ['beast'],
+    themes: ['warrior'],
     description: "An EARTH and DARK deck spanning Beast-Warrior, Machine, and other Types whose canine-themed monsters react to the opponent's own monster effects, punishing them with reactive Special Summons and Rank 5 Xyz plays.",
     deckSpeed: 'medium',
     extraDeckDependency: 'medium',
@@ -3713,7 +3713,7 @@ export const CURATED_ARCHETYPES: Record<string, CuratedArchetypeInfo> = {
   'Kaiju': {
     level: 'intermediate',
     playstyle: 'control',
-    themes: ['beast'],
+    themes: ['aqua', 'insect'],
     description: "A toolbox of giant monsters from any Type or Attribute that Special Summon themselves to either player's field by tributing an opposing monster, breaking through opposing boards other removal can't touch.",
     deckSpeed: 'medium',
     extraDeckDependency: 'low',
