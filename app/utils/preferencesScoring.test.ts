@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { computeMaxScore, computeArchetypeScore, getMatchingArchetypeNames, deriveEra } from './preferencesScoring'
 import type { QuestionnaireAnswers } from './preferencesScoring'
 import type { CuratedArchetypeInfo } from '~/data/curatedArchetypes'
+import { CURATED_ARCHETYPES } from '~/data/curatedArchetypes'
 
 function makeInfo (overrides: Partial<CuratedArchetypeInfo> = {}): CuratedArchetypeInfo {
   return {
@@ -11,7 +12,9 @@ function makeInfo (overrides: Partial<CuratedArchetypeInfo> = {}): CuratedArchet
     description: 'Test archetype.',
     deckSpeed: 'fast',
     extraDeckDependency: 'low',
-    era: 'classic',
+    releaseYear: 2005, // classic
+    releaseContext: 'Test release context.',
+    gameplay: 'Test gameplay paragraph.',
     decisionComplexity: 'linear',
     dominantMechanic: 'main-deck',
     keyCards: ['Test Card'],
@@ -66,6 +69,13 @@ describe('computeArchetypeScore', () => {
     const info = makeInfo({ level: 'expert' })
     expect(computeArchetypeScore(info, { ...emptyAnswers(), level: 'expert' })).toBe(10)
     expect(computeArchetypeScore(info, { ...emptyAnswers(), level: 'beginner' })).toBe(0)
+  })
+
+  it('matches era derived from releaseYear, not a stored era field', () => {
+    const modernInfo = makeInfo({ releaseYear: 2015 }) // deriveEra(2015) === 'modern'
+    const classicInfo = makeInfo({ releaseYear: 2005 }) // deriveEra(2005) === 'classic'
+    expect(computeArchetypeScore(modernInfo, { ...emptyAnswers(), era: 'modern' })).toBe(10)
+    expect(computeArchetypeScore(classicInfo, { ...emptyAnswers(), era: 'modern' })).toBe(0)
   })
 
   it('matches themes on any overlap', () => {
@@ -133,5 +143,14 @@ describe('deriveEra', () => {
   it('returns recent for years from 2020 onward', () => {
     expect(deriveEra(2020)).toBe('recent')
     expect(deriveEra(2026)).toBe('recent')
+  })
+})
+
+describe('CURATED_ARCHETYPES data integrity', () => {
+  it('every entry has releaseYear, releaseContext and gameplay filled', () => {
+    const incomplete = Object.entries(CURATED_ARCHETYPES).filter(
+      ([, info]) => !info.releaseYear || !info.releaseContext?.trim() || !info.gameplay?.trim()
+    )
+    expect(incomplete.map(([name]) => name)).toEqual([])
   })
 })

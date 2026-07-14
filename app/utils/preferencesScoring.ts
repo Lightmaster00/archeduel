@@ -46,7 +46,7 @@ export function computeArchetypeScore (info: CuratedArchetypeInfo, answers: Ques
   if (answers.themes.length > 0 && answers.themes.some(theme => info.themes.includes(theme))) score += MATCH_POINTS
   if (answers.deckSpeed && info.deckSpeed === answers.deckSpeed) score += MATCH_POINTS
   if (answers.extraDeckDependency && info.extraDeckDependency === answers.extraDeckDependency) score += MATCH_POINTS
-  if (answers.era && info.era === answers.era) score += MATCH_POINTS
+  if (answers.era && deriveEra(info.releaseYear) === answers.era) score += MATCH_POINTS
   if (answers.winCondition && info.winCondition === answers.winCondition) score += MATCH_POINTS
   if (answers.avoidMechanic && info.dominantMechanic === answers.avoidMechanic) score -= AVOID_PENALTY
   return score
